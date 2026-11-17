@@ -351,5 +351,15 @@ Aplikasi ini adalah **alat bantu belajar**, bukan alat diagnosis.
 ## LISENSI KODE
 
 Kode proyek ini released di bawah lisensi **MPL-2.0** (Mozilla Public
-License 2.0). Dataset **tetap** mengikuti lisensi CC BY-NC masing-masing dan
-**tidak** ikut di-released dalam lisensi ini.
+License 2.0), teks lengkapnya ada di berkas `LICENSE`.
+
+Dataset **tidak** ikut di-released dalam lisensi ini dan tetap mengikuti
+lisensinya masing-masing:
+
+| Dataset | Lisensi | Batas penggunaan |
+|---|---|---|
+| HAM10000 (Tschandl dkk., 2018) | CC BY-NC 4.0 | Hanya akademik / non-komersial |
+| PAD-UFES-20 (Pacheco dkk., 2020) | CC BY 4.0 | Bebas, wajib sitasi |
+
+Kedua dataset diunduh ulang secara manual sesuai petunjuk di bagian
+"Langkah 2" dan wajib disitasi di laporan maupun di aplikasi.

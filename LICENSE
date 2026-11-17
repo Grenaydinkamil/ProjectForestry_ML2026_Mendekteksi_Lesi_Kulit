@@ -371,20 +371,3 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
 
   This Source Code Form is "Incompatible With Secondary Licenses", as
   defined by the Mozilla Public License, v. 2.0.
-
-
-================================================================================
-CATATAN LISENSI DATASET (tambahan dari tim, di luar teks resmi MPL-2.0)
-================================================================================
-
-Perangkat lunak dalam repositori ini berlisensi MPL-2.0 (Mozilla Public
-License 2.0) seperti tertera di atas.
-
-Dataset TIDAK termasuk dalam repositori ini dan TIDAK memakai lisensi MPL-2.0:
-
-  - HAM10000 (Tschandl dkk., 2018) -- lisensi CC BY-NC 4.0,
-    hanya untuk penggunaan akademik/non-komersial.
-  - PAD-UFES-20 (Pacheco dkk., 2020) -- lisensi CC BY 4.0.
-
-Kedua dataset diunduh ulang secara manual oleh pengguna sesuai petunjuk
-di README.md, dan wajib disitasi di laporan maupun di aplikasi.
