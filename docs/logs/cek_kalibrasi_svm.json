@@ -1,0 +1,30 @@
+[
+  {
+    "cara":"SVC polos (acuan)",
+    "f1_macro":0.3436997376,
+    "accuracy":0.676913015,
+    "malignant_recall":0.4903846154,
+    "waktu_s":null
+  },
+  {
+    "cara":"SVC(probability=True)",
+    "f1_macro":0.2956834724,
+    "accuracy":0.7056899935,
+    "malignant_recall":0.3365384615,
+    "waktu_s":54.1992540359
+  },
+  {
+    "cara":"CalibratedClassifierCV(ensemble=False)",
+    "f1_macro":0.2151190062,
+    "accuracy":0.6893394375,
+    "malignant_recall":0.1891025641,
+    "waktu_s":25.5243782997
+  },
+  {
+    "cara":"CalibratedClassifierCV(ensemble=True)",
+    "f1_macro":0.2713476022,
+    "accuracy":0.7063440157,
+    "malignant_recall":0.2980769231,
+    "waktu_s":13.9939389229
+  }
+]

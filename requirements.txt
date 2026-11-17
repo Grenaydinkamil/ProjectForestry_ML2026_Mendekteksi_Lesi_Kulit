@@ -1,0 +1,57 @@
+# =============================================================================
+# requirements.txt  -  Proyek Klasifikasi Lesi Kulit (ML2026)
+# =============================================================================
+# Versi di-pin (dipatok) agar hasil training bisa direproduksi persis.
+# Cara pasang:  pip install -r requirements.txt
+#
+# PENTING: Python 3.13 WAJIB. TensorFlow 2.21 tidak mendukung Python 3.14,
+# dan Python 3.9 sudah dihentikan dukungannya sejak TF 2.21.
+# =============================================================================
+
+# --- Inti Machine Learning -----------------------------------------------
+tensorflow==2.21.0            # Framework deep learning (memakai Keras 3.15.1)
+scikit-learn==1.9.1            # SVM, Random Forest, metrik evaluasi
+scikit-image==0.26.0           # Ekstraksi fitur HOG
+scipy==1.18.1                 # Dipakai scikit-learn (dependensi)
+
+# --- Manipulasi data & visualisasi --------------------------------------
+pandas==3.1.1                 # Pembacaan metadata CSV & manipulasi tabel
+numpy==2.5.4                  # Operasi numerik (di-pin sesuai TF 2.21)
+matplotlib==3.11.2             # Plot kurva loss, confusion matrix, EDA
+seaborn==0.13.2                # Heatmap confusion matrix & korelasi
+pillow==13.0.0                # Membaca/menulis file gambar (JPEG)
+
+# --- Utilitas -----------------------------------------------------------
+joblib==1.6.0                 # Menyimpan model sklearn (SVC/RF) ke disk
+
+# --- Notebook & Aplikasi Web --------------------------------------------
+jupyterlab==4.6.6             # Environment notebook untuk EDA & training
+ipykernel==7.4.0              # Kernel Python untuk JupyterLab
+streamlit==1.67.0             # Aplikasi web interaktif (deployment)
+
+# =============================================================================
+# CATATAN VERSI (hasil verifikasi di mesin ini, 11 Nov 2026)
+# =============================================================================
+# Python 3.13.9  -> venv utama di Windows (TRAINING + APP)
+# TensorFlow 2.21.0 (Keras 3.15.1) -> wheel win_amd64 CPU-only
+#
+#   Kenapa CPU-only di Windows?
+#     Dokumentasi resmi TensorFlow menyatakan TensorFlow 2.10 adalah
+#     rilis TERAKHIR yang mendukung GPU di Windows native. Mulai 2.11,
+#     GPU di Windows hanya bisa lewat:
+#       (a) WSL2  -> pip install "tensorflow[and-cuda]"
+#       (b) Colab -> training di cloud
+#     (dokumentasi: tensorflow.org/install/pip, bagian "Windows Native")
+#
+#   Strategi proyek ini:
+#     - Training model klasik (SVM/RF)  : CPU Windows, cepat
+#     - Training CNN + MobileNetV2      : WSL2 + GPU (RTX 5070)
+#     - Inference aplikasi Streamlit    : tensorflow-cpu (ringan, portable)
+#
+#   WSL2 setup (sudah dilakukan di mesin ini):
+#     wsl -d Ubuntu-26.04 -u root -- bash <skrip-setup>
+#     -> Python 3.12 + TensorFlow 2.21 dengan CUDA, GPU terdeteksi
+#
+# Untuk DEPLOY di Streamlit Community Cloud, pakai requirements-deploy.txt
+# (tensorflow-cpu, jauh lebih kecil).
+# =============================================================================

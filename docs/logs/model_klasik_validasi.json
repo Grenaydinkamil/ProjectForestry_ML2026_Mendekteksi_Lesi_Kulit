@@ -1,0 +1,131 @@
+{
+  "svm": {
+    "params": {
+      "C": 10.0,
+      "gamma": "scale",
+      "kernel": "linear"
+    },
+    "f1_macro": 0.28255640177279945,
+    "accuracy": 0.7037279267495095,
+    "malignant_recall": 0.2916666666666667,
+    "fit_time_seconds": 54.11,
+    "cv": {
+      "f1_macro_mean": 0.265793374143675,
+      "f1_macro_std": 0.010717077509927017,
+      "scores": [
+        0.25831672457665633,
+        0.25858168753281163,
+        0.26852181908962847,
+        0.2578555949404611,
+        0.28569104457881733
+      ]
+    }
+  },
+  "random_forest": {
+    "params": {
+      "n_estimators": 200,
+      "max_depth": 20
+    },
+    "f1_macro": 0.349145533515428,
+    "accuracy": 0.7109221713538261,
+    "malignant_recall": 0.1987179487179487,
+    "fit_time_seconds": 1.17,
+    "cv": {
+      "f1_macro_mean": 0.3092299845152066,
+      "f1_macro_std": 0.017829081843107254,
+      "scores": [
+        0.31174336323960167,
+        0.339201244754556,
+        0.3097456725295458,
+        0.2843629052432825,
+        0.30109673680904725
+      ]
+    }
+  },
+  "all_svm_configs": [
+    {
+      "params": {
+        "C": 1.0,
+        "gamma": "scale",
+        "kernel": "rbf"
+      },
+      "f1_macro": 0.273728657051917,
+      "accuracy": 0.7089601046435579,
+      "malignant_recall": 0.3173076923076923
+    },
+    {
+      "params": {
+        "C": 10.0,
+        "gamma": "scale",
+        "kernel": "rbf"
+      },
+      "f1_macro": 0.24620967775046662,
+      "accuracy": 0.6991497710922171,
+      "malignant_recall": 0.28525641025641024
+    },
+    {
+      "params": {
+        "C": 100.0,
+        "gamma": "scale",
+        "kernel": "rbf"
+      },
+      "f1_macro": 0.24543255339555067,
+      "accuracy": 0.7024198822759974,
+      "malignant_recall": 0.23076923076923078
+    },
+    {
+      "params": {
+        "C": 10.0,
+        "gamma": "scale",
+        "kernel": "linear"
+      },
+      "f1_macro": 0.28255640177279945,
+      "accuracy": 0.7037279267495095,
+      "malignant_recall": 0.2916666666666667
+    }
+  ],
+  "ablation_histogram_only_svm": {
+    "f1_macro": 0.26154816007325016,
+    "accuracy": 0.6821451929365598,
+    "malignant_recall": 0.36538461538461536
+  },
+  "all_rf_configs": [
+    {
+      "params": {
+        "n_estimators": 200,
+        "max_depth": null
+      },
+      "f1_macro": 0.338673681621454,
+      "accuracy": 0.7155003270111184,
+      "malignant_recall": 0.18269230769230768
+    },
+    {
+      "params": {
+        "n_estimators": 200,
+        "max_depth": 20
+      },
+      "f1_macro": 0.349145533515428,
+      "accuracy": 0.7109221713538261,
+      "malignant_recall": 0.1987179487179487
+    },
+    {
+      "params": {
+        "n_estimators": 400,
+        "max_depth": null
+      },
+      "f1_macro": 0.3341878212575076,
+      "accuracy": 0.7148463047743623,
+      "malignant_recall": 0.16987179487179488
+    },
+    {
+      "params": {
+        "n_estimators": 400,
+        "max_depth": 30
+      },
+      "f1_macro": 0.33318451415768596,
+      "accuracy": 0.7128842380640942,
+      "malignant_recall": 0.16987179487179488
+    }
+  ],
+  "note": "Semua angka di atas dihitung pada DATA VALIDASI. Data test belum disentuh."
+}

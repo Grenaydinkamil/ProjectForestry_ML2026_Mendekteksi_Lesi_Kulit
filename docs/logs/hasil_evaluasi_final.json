@@ -1,0 +1,133 @@
+{
+  "test_set_size": 1527,
+  "models_evaluated": [
+    "SVM (HOG)",
+    "Random Forest (HOG)",
+    "CNN (from scratch)",
+    "MobileNetV2"
+  ],
+  "per_model": {
+    "SVM (HOG)": {
+      "accuracy": 0.6928618205631958,
+      "precision_macro": 0.2973659213363016,
+      "recall_macro": 0.27277084156252274,
+      "f1_macro": 0.26419159330803604,
+      "auc_ovr_macro": 0.8445835850052018,
+      "malignant_recall": 0.25,
+      "specificity": 0.9470252648736757,
+      "binary_with_tuned_threshold": {
+        "threshold": 0.17000000000000004,
+        "recall": 0.86,
+        "specificity": 0.5444172779136104,
+        "precision": 0.3157894736842105,
+        "f1": 0.4619516562220233,
+        "tp": 258,
+        "fp": 559,
+        "fn": 42,
+        "tn": 668
+      },
+      "inference_ms_per_image": 10.233013319204114,
+      "overfit_analysis": {
+        "f1_train": 0.3037824213255757,
+        "f1_test": 0.26419159330803604,
+        "gap": 0.03959082801753966,
+        "diagnosis": "sedikit overfitting"
+      }
+    },
+    "Random Forest (HOG)": {
+      "accuracy": 0.7131630648330058,
+      "precision_macro": 0.5473512148318141,
+      "recall_macro": 0.284000318402467,
+      "f1_macro": 0.3239614961697314,
+      "auc_ovr_macro": 0.8931482701460045,
+      "malignant_recall": 0.26,
+      "specificity": 0.9625101874490628,
+      "binary_with_tuned_threshold": {
+        "threshold": 0.2,
+        "recall": 0.9166666666666666,
+        "specificity": 0.6079869600651997,
+        "precision": 0.3637566137566138,
+        "f1": 0.5208333333333334,
+        "tp": 275,
+        "fp": 481,
+        "fn": 25,
+        "tn": 746
+      },
+      "inference_ms_per_image": 6.385974971468962,
+      "overfit_analysis": {
+        "f1_train": 1.0,
+        "f1_test": 0.3239614961697314,
+        "gap": 0.6760385038302685,
+        "diagnosis": "OVERFITTING PARAH"
+      }
+    },
+    "CNN (from scratch)": {
+      "accuracy": 0.5533726260641781,
+      "precision_macro": 0.34423200899197254,
+      "recall_macro": 0.469778604902697,
+      "f1_macro": 0.36340384234701073,
+      "auc_ovr_macro": 0.8535284048364831,
+      "malignant_recall": 0.58,
+      "specificity": 0.6862265688671557,
+      "binary_with_tuned_threshold": {
+        "threshold": 0.12000000000000001,
+        "recall": 0.9066666666666666,
+        "specificity": 0.48247758761206194,
+        "precision": 0.29988974641675853,
+        "f1": 0.45070422535211263,
+        "tp": 272,
+        "fp": 635,
+        "fn": 28,
+        "tn": 592
+      },
+      "inference_ms_per_image": 9.605496243549938,
+      "overfit_analysis": {
+        "f1_train": 0.3855434525214477,
+        "f1_test": 0.36340384234701073,
+        "gap": 0.022139610174436997,
+        "diagnosis": "sedikit overfitting"
+      }
+    },
+    "MobileNetV2": {
+      "accuracy": 0.6175507531106745,
+      "precision_macro": 0.38819364994393313,
+      "recall_macro": 0.5778518192024424,
+      "f1_macro": 0.39931930072886684,
+      "auc_ovr_macro": 0.8763713941568738,
+      "malignant_recall": 0.45,
+      "specificity": 0.8720456397718012,
+      "binary_with_tuned_threshold": {
+        "threshold": 0.11000000000000001,
+        "recall": 0.87,
+        "specificity": 0.5517522412387939,
+        "precision": 0.3218249075215783,
+        "f1": 0.46984698469846975,
+        "tp": 261,
+        "fp": 550,
+        "fn": 39,
+        "tn": 677
+      },
+      "inference_ms_per_image": 59.28386873721139,
+      "overfit_analysis": {
+        "f1_train": 0.42784463568673325,
+        "f1_test": 0.39931930072886684,
+        "gap": 0.02852533495786641,
+        "diagnosis": "sedikit overfitting"
+      }
+    }
+  },
+  "selected_model": "MobileNetV2",
+  "selection_scores": {
+    "SVM (HOG)": 0.487047898327009,
+    "Random Forest (HOG)": 0.5818237073757662,
+    "CNN (from scratch)": 0.688184293920086,
+    "MobileNetV2": 0.7043298251822168
+  },
+  "selection_weights": {
+    "recall_ganas": 0.35,
+    "f1_macro": 0.25,
+    "domain_shift": 0.2,
+    "efisiensi": 0.2
+  },
+  "threshold_target_recall": 0.9
+}

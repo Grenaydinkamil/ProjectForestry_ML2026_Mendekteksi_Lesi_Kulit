@@ -1,0 +1,40 @@
+{
+  "_catatan": "Data kelompok resmi. Diperbarui 12 November 2026.",
+  "judul": "Klasifikasi Lesi Kulit Berbasis Citra dengan HOG-SVM, HOG-Random Forest, CNN, dan MobileNetV2, Termasuk Evaluasi Domain Shift pada Foto Smartphone",
+  "kelompok": "Kelompok 1 - ML2026",
+  "kelas": "ML2026",
+  "anggota": [
+    {
+      "nama": "Arken Yusufa Ibrahim",
+      "nim": "J0404241166"
+    },
+    {
+      "nama": "Ghazali Habibie A",
+      "nim": "J0404241145"
+    },
+    {
+      "nama": "Nabil Zulfan Nurtsani",
+      "nim": "J0404241052"
+    }
+  ],
+  "anggota_ringkas": "Arken Yusufa Ibrahim (J0404241166)\nGhazali Habibie A (J0404241145)\nNabil Zulfan Nurtsani (J0404241052)",
+  "dosen": "Dosen Pengampu ML2026",
+  "tanggal": "November 2026",
+  "pembagian_tugas": [
+    {
+      "anggota": "Arken Yusufa Ibrahim",
+      "nim": "J0404241166",
+      "tugas": "Dataset, EDA, preprocessing, split data, rekayasa fitur (Notebook 01-03)"
+    },
+    {
+      "anggota": "Ghazali Habibie A",
+      "nim": "J0404241145",
+      "tugas": "Model klasik (SVM/RF), CNN, MobileNetV2, evaluasi dan perbandingan (Notebook 04-07)"
+    },
+    {
+      "anggota": "Nabil Zulfan Nurtsani",
+      "nim": "J0404241052",
+      "tugas": "Uji eksternal PAD-UFES-20, aplikasi Streamlit, deploy, PPT, video demo (Notebook 08, app/)"
+    }
+  ]
+}

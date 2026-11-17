@@ -1,0 +1,8 @@
+kelas,nama_indonesia,jumlah,persentase,kelompok
+nv,Mola (Nevus Melanositik),6705,66.94957563654518,tidak ganas
+mel,Melanoma,1113,11.11333000499251,ganas
+bkl,Lesi Keratosis Jinak,1099,10.973539690464303,tidak ganas
+bcc,Karsinoma Sel Basal,514,5.132301547678482,ganas
+akiec,Keratosis Intraepitel Atipis,327,3.2651023464802793,ganas
+vasc,Lesi Vaskular,142,1.417873190214678,tidak ganas
+df,Dermatofibroma,115,1.1482775836245633,tidak ganas

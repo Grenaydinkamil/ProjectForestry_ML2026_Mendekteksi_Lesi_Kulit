@@ -1,0 +1,100 @@
+[
+  {
+    "key": "tschandl2018",
+    "found": true,
+    "title_match": true,
+    "doi_match": true,
+    "year_match": true,
+    "pubmed": {
+      "pmid": "",
+      "title": "The HAM10000 dataset, a large collection of multi-source dermatoscopic images of common pigmented skin lesions.",
+      "journal": "Scientific data",
+      "year": "2018",
+      "doi": "10.1038/sdata.2018.161"
+    }
+  },
+  {
+    "key": "pacheco2020",
+    "found": true,
+    "title_match": true,
+    "doi_match": true,
+    "year_match": true,
+    "pubmed": {
+      "pmid": "",
+      "title": "PAD-UFES-20: A skin lesion dataset composed of patient data and clinical images collected from smartphones.",
+      "journal": "Data in brief",
+      "year": "2020",
+      "doi": "10.1016/j.dib.2020.106221"
+    }
+  },
+  {
+    "key": "fogelberg2023",
+    "found": true,
+    "title_match": true,
+    "doi_match": true,
+    "year_match": true,
+    "pubmed": {
+      "pmid": "",
+      "title": "Domain shifts in dermoscopic skin cancer datasets: Evaluation of essential limitations for clinical translation.",
+      "journal": "New biotechnology",
+      "year": "2023",
+      "doi": "10.1016/j.nbt.2023.04.006"
+    }
+  },
+  {
+    "key": "combalia2022",
+    "found": true,
+    "title_match": true,
+    "doi_match": true,
+    "year_match": true,
+    "pubmed": {
+      "pmid": "",
+      "title": "Validation of artificial intelligence prediction models for skin cancer diagnosis using dermoscopy images: the 2019 International Skin Imaging Collaboration Grand Challenge.",
+      "journal": "The Lancet. Digital health",
+      "year": "2022",
+      "doi": "10.1016/S2589-7500(22)00021-8"
+    }
+  },
+  {
+    "key": "almaraz2024",
+    "found": true,
+    "title_match": true,
+    "doi_match": true,
+    "year_match": true,
+    "pubmed": {
+      "pmid": "",
+      "title": "Melanoma and Nevus Skin Lesion Classification Using Handcraft and Deep Learning Feature Fusion via Mutual Information Measures.",
+      "journal": "Entropy (Basel, Switzerland)",
+      "year": "2020",
+      "doi": "10.3390/e22040484"
+    }
+  },
+  {
+    "key": "katsch2022",
+    "found": true,
+    "title_match": true,
+    "doi_match": true,
+    "year_match": true,
+    "pubmed": {
+      "pmid": "",
+      "title": "Comparison of Convolutional Neural Network Architectures for Robustness Against Common Artefacts in Dermatoscopic Images.",
+      "journal": "Dermatology practical &amp; conceptual",
+      "year": "2022",
+      "doi": "10.5826/dpc.1203a126"
+    }
+  },
+  {
+    "key": "roemberg2021",
+    "found": true,
+    "title_match": true,
+    "doi_match": true,
+    "year_match": true,
+    "pubmed": {
+      "pmid": "",
+      "title": "A patient-centric dataset of images and metadata for identifying melanomas using clinical context.",
+      "journal": "Scientific data",
+      "year": "2021",
+      "doi": "10.1038/s41597-021-00815-z"
+    }
+  }
+]

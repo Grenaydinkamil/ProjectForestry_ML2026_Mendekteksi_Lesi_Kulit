@@ -1,0 +1,60 @@
+# =============================================================================
+# .gitignore  -  Jangan pernah commit data besar atau file sementara
+# =============================================================================
+
+# --- Data mentah & turunan (BISAJAKAN: unduh ulang lewat skrip) ---------
+data/raw/
+data/processed/
+data/external/
+*.zip
+*.tar
+*.tar.gz
+
+# --- Model trained -----------------------------------------------------------
+# Yang DIKOMMIT hanya dua model yang dipakai di tahap hilir:
+#   mobilenetv2_best.keras  -> dipakai aplikasi web
+#   cnn_best.keras          -> dipakai perbandingan di Notebook 07/08
+# Checkpoint per-varian (cnn_*_best.keras, mobilenetv2_stage*_best.keras)
+# TIDAK dikomit: ukurannya besar dan bisa dibuat ulang dengan menjalankan
+# Notebook 05 dan 06.
+models/*.npy
+models/*.pkl
+models/*.joblib
+models/hog_features*/
+models/cnn_spesifik_best.keras
+models/cnn_lebar_best.keras
+models/cnn_lebar-flat_best.keras
+models/mobilenetv2_stage1_best.keras
+models/mobilenetv2_stage2_best.keras
+
+# --- Node (untuk generator PPT) ----------------------------------------------
+node_modules/
+package-lock.json
+
+# --- Python -------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# --- Jupyter ------------------------------------------------------------
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# --- OS & Editor --------------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# --- Rahasia & log ------------------------------------------------------
+.env
+*.log
+
+# --- WSL ----------------------------------------------------------------
+# VHDX WSL bisa berukuran puluhan GB, jangan pernah di-commit.
+*.vhdx

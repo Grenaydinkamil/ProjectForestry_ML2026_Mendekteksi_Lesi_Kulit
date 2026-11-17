@@ -1,0 +1,45 @@
+{
+  "model": "CNN lebar + Flatten",
+  "params": 2207623,
+  "f1_macro": 0.3419766616120479,
+  "accuracy": 0.5297580117724002,
+  "malignant_recall": 0.6346153846153846,
+  "epochs_trained": 21,
+  "best_val_loss": 3.282980442047119,
+  "gap_vs_flatten": [
+    {
+      "model": "CNN spesifik + GAP",
+      "params": 20231,
+      "f1_macro": 0.3066672819401746,
+      "accuracy": 0.5546108567691301,
+      "malignant_recall": 0.1794871794871795,
+      "epochs_trained": 13,
+      "best_val_loss": 1.1211931705474854,
+      "train_time_s": 1266.6,
+      "kelas_terprediksi": 7
+    },
+    {
+      "model": "CNN lebar + GAP",
+      "params": 374407,
+      "f1_macro": 0.09601482229349534,
+      "accuracy": 0.40876389797253104,
+      "malignant_recall": 0.4775641025641026,
+      "epochs_trained": 6,
+      "best_val_loss": 1.777668833732605,
+      "train_time_s": 726.9,
+      "kelas_terprediksi": 3
+    },
+    {
+      "model": "CNN lebar + Flatten",
+      "params": 2207623,
+      "f1_macro": 0.3419766616120479,
+      "accuracy": 0.5297580117724002,
+      "malignant_recall": 0.6346153846153846,
+      "epochs_trained": 21,
+      "best_val_loss": 3.282980442047119,
+      "train_time_s": 2255.7,
+      "kelas_terprediksi": 7
+    }
+  ],
+  "diagnosis": "OVERFITTING_PARAH: selisih jauh. Model menghafal data latih."
+}

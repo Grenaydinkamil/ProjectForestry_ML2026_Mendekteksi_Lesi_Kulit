@@ -1,0 +1,39 @@
+
+TEMUAN EDA - HAM10000
+=============================================================
+1. KEADAAN DATA
+   - 10.015 gambar, 7.470 lesi unik, 0 file hilang/kosong/duplikat
+   - Metadata bersih, hanya 57 nilai usia kosong (0,57%)
+   - Semua gambar 600x450 RGB, aspect ratio 4:3 (konsisten)
+   - 10015 gambar = 7.470 lesi; 2.545 foto adalah foto tambahan lesi sama
+
+2. KETIDAKSEIMBANGAN KELAS (KRITIS)
+   - nv 6.705 (66,9%) ... df 115 (1,1%)  -> rasio 58 : 1
+   - Model asal menebak "nv" sudah dapat accuracy 67%
+   - KONSEKUENSI: class WAJIB, accuracy TIDAK boleh jadi dasar pemilihan
+
+3. KELAS MINORITAS BERISIKO
+   - df (115) & vasc (142) akan dapat ~17 gambar di val dan ~17 di test
+   - Metrik per kelas untuk keduanya TIDAK STABIL (harus diakui di laporan)
+
+4. MUTU LABEL
+   - 53,3% label dari histopatologi (gold standard), sisanya lebih lemah
+   - Ada bias: lesi yang dibiopsi lebih serius -> model bisa learn "cara foto"
+     bukan murni "penyakit"
+
+5. BIAS DEMOGRAFIS
+   - 54% male, 45% female, 0,6% unknown (distribusi cukup seimbang)
+   - TIDAK ADA data kulit gelap (seluruhnya pigmentasi Fitzpatrick I-II)
+   - Relevan untuk konteks aplikasi di Indonesia
+
+6. SINYAL WARNA (dasar feature Fase 3)
+   - Mean warna antar kelas mirip, TAPI std (variasi) berbeda jelas
+   - melanoma & bcc punya warna lebih tidak merata dibanding mola
+   - Mendukung penggunaan histogram warna + HOG
+
+7. PILIHAN PREPROCESSING (didasarkan pada temuan, bukan asal pakai)
+   - Tidak perlu imputasi usia (tidak dipakai sebagai feature)
+   - Tidak perlu cleaning agresif (dataset sudah bersih)
+   - Perlu class weight (imbalance ekstrem)
+   - Perlu augmentasi (dataset kecil + risiko overfit)
+   - Resize fixed (resolusi seragam)

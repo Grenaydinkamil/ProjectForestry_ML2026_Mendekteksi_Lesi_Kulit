@@ -1,0 +1,13 @@
+{
+  "name": "ml2026-lesi-kulit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generator PPT laporan proyek Machine Learning (ML2026) - Klasifikasi Lesi Kulit",
+  "scripts": {
+    "ppt": "node scripts/build_ppt.js",
+    "ppt:v2": "node scripts/build_ppt_v2.js"
+  },
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}

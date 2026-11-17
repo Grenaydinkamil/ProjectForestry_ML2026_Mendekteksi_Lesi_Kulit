@@ -1,0 +1,29 @@
+[
+  {
+    "cell_size":"8x8",
+    "n_hog_dims":8100,
+    "f1_macro":0.2163282808,
+    "accuracy":0.6899934598,
+    "malignant_recall":0.2179487179,
+    "waktu_s":181.1633884907,
+    "sumber_fitur":"ekstraksi baru"
+  },
+  {
+    "cell_size":"16x16",
+    "n_hog_dims":1764,
+    "f1_macro":0.211780146,
+    "accuracy":0.6880313931,
+    "malignant_recall":0.1858974359,
+    "waktu_s":27.0932414532,
+    "sumber_fitur":"cache"
+  },
+  {
+    "cell_size":"32x32",
+    "n_hog_dims":324,
+    "f1_macro":0.2175300687,
+    "accuracy":0.6913015043,
+    "malignant_recall":0.1666666667,
+    "waktu_s":91.8252511024,
+    "sumber_fitur":"ekstraksi baru"
+  }
+]

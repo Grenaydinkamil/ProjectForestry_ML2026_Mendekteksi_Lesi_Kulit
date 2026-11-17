@@ -1,0 +1,205 @@
+[
+  {
+    "konfigurasi":"BASELINE: selalu nebak nv",
+    "f1_macro":0.1147999106,
+    "accuracy":0.6716808371,
+    "malignant_recall":0.0,
+    "waktu_s":0.0
+  },
+  {
+    "konfigurasi":"RF pada 1812 fitur penuh",
+    "f1_macro":0.1467423528,
+    "accuracy":0.6814911707,
+    "malignant_recall":0.0192307692,
+    "waktu_s":8.7358996868
+  },
+  {
+    "konfigurasi":"SVC PCA(30) dari 1812 fitur",
+    "f1_macro":0.2748922014,
+    "accuracy":0.6069326357,
+    "malignant_recall":0.516025641,
+    "waktu_s":6.1055612564
+  },
+  {
+    "konfigurasi":"SVC PCA(100) dari 1812 fitur",
+    "f1_macro":0.3189219324,
+    "accuracy":0.6893394375,
+    "malignant_recall":0.4455128205,
+    "waktu_s":10.3472430706
+  },
+  {
+    "konfigurasi":"SVC PCA(400) dari 1812 fitur",
+    "f1_macro":0.3068676462,
+    "accuracy":0.7168083715,
+    "malignant_recall":0.3429487179,
+    "waktu_s":22.916084528
+  },
+  {
+    "konfigurasi":"SVC-RBF histogram saja (48)",
+    "f1_macro":0.3728063917,
+    "accuracy":0.5716154349,
+    "malignant_recall":0.7115384615,
+    "waktu_s":4.5021529198
+  },
+  {
+    "konfigurasi":"RF histogram saja (48)",
+    "f1_macro":0.3603788532,
+    "accuracy":0.7011118378,
+    "malignant_recall":0.2564102564,
+    "waktu_s":2.2156553268
+  },
+  {
+    "konfigurasi":"SVC PCA(10) HOG + histogram",
+    "f1_macro":0.3351229277,
+    "accuracy":0.6206671027,
+    "malignant_recall":0.5961538462,
+    "waktu_s":7.3796281815
+  },
+  {
+    "konfigurasi":"SVC PCA(30) HOG + histogram",
+    "f1_macro":0.3423144132,
+    "accuracy":0.6814911707,
+    "malignant_recall":0.4775641026,
+    "waktu_s":20.0754973888
+  },
+  {
+    "konfigurasi":"SVC PCA(50) HOG + histogram",
+    "f1_macro":0.3218251477,
+    "accuracy":0.6867233486,
+    "malignant_recall":0.4294871795,
+    "waktu_s":5.1122219563
+  },
+  {
+    "konfigurasi":"SVC PCA(100) HOG + histogram",
+    "f1_macro":0.2708038204,
+    "accuracy":0.693263571,
+    "malignant_recall":0.2852564103,
+    "waktu_s":9.5009179115
+  },
+  {
+    "konfigurasi":"SVC PCA(200) HOG + histogram",
+    "f1_macro":0.237073619,
+    "accuracy":0.6971877044,
+    "malignant_recall":0.1666666667,
+    "waktu_s":23.8375205994
+  },
+  {
+    "konfigurasi":"SVC PCA(400) HOG + histogram",
+    "f1_macro":0.1910456017,
+    "accuracy":0.6854153041,
+    "malignant_recall":0.1057692308,
+    "waktu_s":40.7944493294
+  },
+  {
+    "konfigurasi":"SVC PCA(30) HOG + hist x1.0",
+    "f1_macro":0.3070182267,
+    "accuracy":0.6455199477,
+    "malignant_recall":0.4807692308,
+    "waktu_s":6.4880313873
+  },
+  {
+    "konfigurasi":"SVC PCA(30) HOG + hist x3.0",
+    "f1_macro":0.3252260839,
+    "accuracy":0.6716808371,
+    "malignant_recall":0.4871794872,
+    "waktu_s":9.1092898846
+  },
+  {
+    "konfigurasi":"SVC PCA(30) HOG + hist x6.0",
+    "f1_macro":0.3423144132,
+    "accuracy":0.6814911707,
+    "malignant_recall":0.4775641026,
+    "waktu_s":19.5433709621
+  },
+  {
+    "konfigurasi":"SVC PCA(30) HOG + hist x12.0",
+    "f1_macro":0.3472075988,
+    "accuracy":0.676913015,
+    "malignant_recall":0.4903846154,
+    "waktu_s":5.0045223236
+  },
+  {
+    "konfigurasi":"SVC PCA(30) HOG + hist x24.0",
+    "f1_macro":0.3712169158,
+    "accuracy":0.6572923479,
+    "malignant_recall":0.5288461538,
+    "waktu_s":5.8134226799
+  },
+  {
+    "konfigurasi":"SVC PCA(30) HOG + hist x48.0",
+    "f1_macro":0.3868025366,
+    "accuracy":0.6370176586,
+    "malignant_recall":0.6474358974,
+    "waktu_s":6.1145660877
+  },
+  {
+    "konfigurasi":"SVC PCA(30) HOG + hist x96.0",
+    "f1_macro":0.4095586277,
+    "accuracy":0.6213211249,
+    "malignant_recall":0.6987179487,
+    "waktu_s":18.0594847202
+  },
+  {
+    "konfigurasi":"RF  PCA(30) HOG + hist x1.0",
+    "f1_macro":0.332984851,
+    "accuracy":0.7135382603,
+    "malignant_recall":0.1698717949,
+    "waktu_s":11.6020200253
+  },
+  {
+    "konfigurasi":"RF  PCA(30) HOG + hist x3.0",
+    "f1_macro":0.332704291,
+    "accuracy":0.7128842381,
+    "malignant_recall":0.1698717949,
+    "waktu_s":5.2700304985
+  },
+  {
+    "konfigurasi":"RF  PCA(30) HOG + hist x6.0",
+    "f1_macro":0.332704291,
+    "accuracy":0.7128842381,
+    "malignant_recall":0.1698717949,
+    "waktu_s":2.8437898159
+  },
+  {
+    "konfigurasi":"RF  PCA(30) HOG + hist x12.0",
+    "f1_macro":0.332704291,
+    "accuracy":0.7128842381,
+    "malignant_recall":0.1698717949,
+    "waktu_s":2.6522581577
+  },
+  {
+    "konfigurasi":"RF  PCA(30) HOG + hist x24.0",
+    "f1_macro":0.332704291,
+    "accuracy":0.7128842381,
+    "malignant_recall":0.1698717949,
+    "waktu_s":3.0724759102
+  },
+  {
+    "konfigurasi":"RF  PCA(30) HOG + hist x48.0",
+    "f1_macro":0.332704291,
+    "accuracy":0.7128842381,
+    "malignant_recall":0.1698717949,
+    "waktu_s":3.1035964489
+  },
+  {
+    "konfigurasi":"RF  PCA(30) HOG + hist x96.0",
+    "f1_macro":0.332704291,
+    "accuracy":0.7128842381,
+    "malignant_recall":0.1698717949,
+    "waktu_s":2.7272942066
+  },
+  {
+    "konfigurasi":"SVC blockPCA(30) + histogram",
+    "f1_macro":0.3077185316,
+    "accuracy":0.6559843035,
+    "malignant_recall":0.516025641,
+    "waktu_s":10.938557148
+  },
+  {
+    "konfigurasi":"SVC blockPCA(100) + histogram",
+    "f1_macro":0.291326107,
+    "accuracy":0.7004578156,
+    "malignant_recall":0.3365384615,
+    "waktu_s":16.8871085644
+  }
+]

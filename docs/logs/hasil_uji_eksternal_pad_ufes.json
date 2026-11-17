@@ -1,0 +1,123 @@
+{
+  "dataset": "PAD-UFES-20 (foto smartphone)",
+  "doi": "10.17632/zr7vgbcyr2.1",
+  "lisensi": "CC BY 4.0",
+  "n_gambar": 2298,
+  "distribusi_kelompok": {
+    "ganas": 1819,
+    "tidak ganas": 479
+  },
+  "threshold_dari_validasi": {
+    "SVM (HOG)": 0.17000000000000004,
+    "Random Forest (HOG)": 0.2,
+    "CNN (from scratch)": 0.12000000000000001,
+    "MobileNetV2": 0.11000000000000001
+  },
+  "model_terpilih": "MobileNetV2",
+  "hasil_per_model": {
+    "SVM (HOG)": {
+      "accuracy": 0.741514360313316,
+      "precision": 0.8165374677002584,
+      "recall": 0.868609125893348,
+      "specificity": 0.2588726513569937,
+      "f1": 0.8417687799680341,
+      "tp": 1580,
+      "fp": 355,
+      "fn": 239,
+      "tn": 124
+    },
+    "Random Forest (HOG)": {
+      "accuracy": 0.721496953872933,
+      "precision": 0.8164251207729468,
+      "recall": 0.8361737218251787,
+      "specificity": 0.2860125260960334,
+      "f1": 0.8261814231395981,
+      "tp": 1521,
+      "fp": 342,
+      "fn": 298,
+      "tn": 137
+    },
+    "CNN (from scratch)": {
+      "accuracy": 0.7697998259355961,
+      "precision": 0.7882037533512064,
+      "recall": 0.9697636063771303,
+      "specificity": 0.010438413361169102,
+      "f1": 0.869608084791718,
+      "tp": 1764,
+      "fp": 474,
+      "fn": 55,
+      "tn": 5
+    },
+    "MobileNetV2": {
+      "accuracy": 0.7845953002610966,
+      "precision": 0.857451403887689,
+      "recall": 0.8730071467839472,
+      "specificity": 0.4488517745302714,
+      "f1": 0.8651593571233996,
+      "tp": 1588,
+      "fp": 264,
+      "fn": 231,
+      "tn": 215
+    }
+  },
+  "per_diagnosis": [
+    {
+      "diagnosis": "ACK",
+      "n": 730,
+      "terdeteksi": 641,
+      "recall": 0.8780821917808219,
+      "kelompok": "ganas"
+    },
+    {
+      "diagnosis": "BCC",
+      "n": 845,
+      "terdeteksi": 754,
+      "recall": 0.8923076923076924,
+      "kelompok": "ganas"
+    },
+    {
+      "diagnosis": "MEL",
+      "n": 52,
+      "terdeteksi": 33,
+      "recall": 0.6346153846153846,
+      "kelompok": "ganas"
+    },
+    {
+      "diagnosis": "NEV",
+      "n": 244,
+      "terdeteksi": 139,
+      "recall": 0.569672131147541,
+      "kelompok": "tidak ganas"
+    },
+    {
+      "diagnosis": "SCC",
+      "n": 192,
+      "terdeteksi": 160,
+      "recall": 0.8333333333333334,
+      "kelompok": "ganas"
+    },
+    {
+      "diagnosis": "SEK",
+      "n": 235,
+      "terdeteksi": 76,
+      "recall": 0.32340425531914896,
+      "kelompok": "tidak ganas"
+    }
+  ],
+  "statistik_domain": {
+    "HAM10000": {
+      "lebar": 600.0,
+      "tinggi": 450.0,
+      "mean_R": 174.31227111816406,
+      "std_warna": 35.38899230957031,
+      "ketajaman": 130.9625701904297
+    },
+    "PAD-UFES-20": {
+      "lebar": 968.945,
+      "tinggi": 968.805,
+      "mean_R": 168.86065673828125,
+      "std_warna": 34.038360595703125,
+      "ketajaman": 224.21798706054688
+    }
+  }
+}

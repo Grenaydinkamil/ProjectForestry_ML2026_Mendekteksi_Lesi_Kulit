@@ -1,0 +1,50 @@
+{
+  "selected_model": "MobileNetV2",
+  "threshold": 0.11000000000000001,
+  "threshold_per_model": {
+    "SVM (HOG)": 0.17000000000000004,
+    "Random Forest (HOG)": 0.2,
+    "CNN (from scratch)": 0.12000000000000001,
+    "MobileNetV2": 0.11000000000000001
+  },
+  "target_recall": 0.9,
+  "malignant_classes": [
+    "mel",
+    "bcc",
+    "akiec"
+  ],
+  "benign_classes": [
+    "nv",
+    "bkl",
+    "df",
+    "vasc"
+  ],
+  "classes": [
+    "akiec",
+    "bcc",
+    "bkl",
+    "df",
+    "mel",
+    "nv",
+    "vasc"
+  ],
+  "dx_indo": {
+    "akiec": "Keratosis Intraepitel Atipis",
+    "bcc": "Karsinoma Sel Basal",
+    "bkl": "Lesi Keratosis Jinak",
+    "df": "Dermatofibroma",
+    "mel": "Melanoma",
+    "nv": "Mola (Nevus Melanositik)",
+    "vasc": "Lesi Vaskular"
+  },
+  "dx_full_name": {
+    "akiec": "Atypical Intraepithelial Keratosis",
+    "bcc": "Basal Cell Carcinoma",
+    "bkl": "Benign Keratosis-like Lesions",
+    "df": "Dermatofibroma",
+    "mel": "Melanoma",
+    "nv": "Melanocytic Nevi (moles)",
+    "vasc": "Vascular Lesions"
+  },
+  "note": "Threshold dihitung dari DATA VALIDASI (bukan test). Angka ini dipakai aplikasi web untuk keputusan ganas/jinak."
+}

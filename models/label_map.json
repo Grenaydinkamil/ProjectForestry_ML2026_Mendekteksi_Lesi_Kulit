@@ -1,0 +1,49 @@
+{
+  "classes": [
+    "akiec",
+    "bcc",
+    "bkl",
+    "df",
+    "mel",
+    "nv",
+    "vasc"
+  ],
+  "class_to_idx": {
+    "akiec": 0,
+    "bcc": 1,
+    "bkl": 2,
+    "df": 3,
+    "mel": 4,
+    "nv": 5,
+    "vasc": 6
+  },
+  "dx_full_name": {
+    "akiec": "Atypical Intraepithelial Keratosis",
+    "bcc": "Basal Cell Carcinoma",
+    "bkl": "Benign Keratosis-like Lesions",
+    "df": "Dermatofibroma",
+    "mel": "Melanoma",
+    "nv": "Melanocytic Nevi (moles)",
+    "vasc": "Vascular Lesions"
+  },
+  "dx_indo": {
+    "akiec": "Keratosis Intraepitel Atipis",
+    "bcc": "Karsinoma Sel Basal",
+    "bkl": "Lesi Keratosis Jinak",
+    "df": "Dermatofibroma",
+    "mel": "Melanoma",
+    "nv": "Mola (Nevus Melanositik)",
+    "vasc": "Lesi Vaskular"
+  },
+  "malignant_classes": [
+    "mel",
+    "bcc",
+    "akiec"
+  ],
+  "benign_classes": [
+    "nv",
+    "bkl",
+    "df",
+    "vasc"
+  ]
+}

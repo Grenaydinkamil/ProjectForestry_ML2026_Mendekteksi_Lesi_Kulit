@@ -1,0 +1,8 @@
+{
+  "model_type": "mobilenetv2_transfer_learning",
+  "img_size": 224,
+  "normalization": "rescaling_1_127.5_offset_-1",
+  "color_mode": "RGB",
+  "seed": 42,
+  "selected_model": "MobileNetV2"
+}
