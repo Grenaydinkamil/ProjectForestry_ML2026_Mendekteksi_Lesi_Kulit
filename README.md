@@ -342,9 +342,9 @@ Aplikasi ini adalah **alat bantu belajar**, bukan alat diagnosis.
 
 | Anggota | Tugas |
 |---|---|
-| Mahasiswa 1 | Dataset, EDA, preprocessing, split data (Notebook 01-02) |
-| Mahasiswa 2 | Feature engineering, model klasik + deep learning, evaluasi (Notebook 03-07) |
-| Mahasiswa 3 | Implementasi aplikasi Streamlit, uji eksternal, PPT, video demo (Notebook 08, app/) |
+| Arken Yusufa | Dataset, EDA, preprocessing, split data (Notebook 01-02) |
+| Nabil Zulfan | Feature engineering, model klasik + deep learning, evaluasi (Notebook 03-07) |
+| Ghazali Habibi A | Implementasi aplikasi Streamlit, uji eksternal, PPT, video demo (Notebook 08, app/) |
 
 ---
 
