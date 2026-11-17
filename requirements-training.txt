@@ -1,8 +1,18 @@
 # =============================================================================
-# requirements.txt  -  Proyek Klasifikasi Lesi Kulit (ML2026)
+# requirements-training.txt  -  Environment untuk TRAINING & EDA di laptop
 # =============================================================================
 # Versi di-pin (dipatok) agar hasil training bisa direproduksi persis.
-# Cara pasang:  pip install -r requirements.txt
+# Cara pasang:  pip install -r requirements-training.txt
+#
+# PENTING untuk DEPLOY:
+#   File INI BUKAN yang dipakai Streamlit Community Cloud. Platform itu
+#   mencari file dependensi mulai dari folder entrypoint (app/), lalu root.
+#   Karena entrypoint kita adalah app/app.py, yang dipakai adalah
+#   app/requirements.txt (tensorflow-cpu). File ini sengaja dinamai
+#   requirements-training.txt supaya tidak mungkin salah pilih: kalau
+#   ada dua file requirements.txt, platform hanya akan membaca yang
+#   pertama ditemukan, dan kita tidak bisa memastikan yang mana.
+#   Lihat: docs/PANDUAN_DEPLOY.md bagian 3.
 #
 # PENTING: Python 3.13 WAJIB. TensorFlow 2.21 tidak mendukung Python 3.14,
 # dan Python 3.9 sudah dihentikan dukungannya sejak TF 2.21.
@@ -52,6 +62,6 @@ streamlit==1.67.0             # Aplikasi web interaktif (deployment)
 #     wsl -d Ubuntu-26.04 -u root -- bash <skrip-setup>
 #     -> Python 3.12 + TensorFlow 2.21 dengan CUDA, GPU terdeteksi
 #
-# Untuk DEPLOY di Streamlit Community Cloud, pakai requirements-deploy.txt
-# (tensorflow-cpu, jauh lebih kecil).
+# Untuk DEPLOY di Streamlit Community Cloud, yang dipakai adalah
+# app/requirements.txt (tensorflow-cpu, jauh lebih kecil).
 # =============================================================================

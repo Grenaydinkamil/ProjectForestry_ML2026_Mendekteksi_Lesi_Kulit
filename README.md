@@ -82,7 +82,7 @@ ML2026_Kelas_3_Kelompok_1_LesiKulit/
 ├── app/
 │   ├── app.py                 # Aplikasi Streamlit
 │   ├── contoh/                # Contoh gambar untuk demo (4 file)
-│   └── requirements.txt       # Requirement khusus deploy (tensorflow-cpu)
+│   └── requirements.txt       # Requirement DEPLOY (tensorflow-cpu)
 │
 ├── scripts/
 │   ├── check_environment.py       # Cek kesiapan environment
@@ -119,7 +119,7 @@ ML2026_Kelas_3_Kelompok_1_LesiKulit/
 │   ├── CHECKLIST_VIDEO_DEMO.md        # Checklist rekaman video demo
 │   └── REKAP_LAPORAN.md               # Rekap angka hasil
 │
-├── requirements.txt
+├── requirements-training.txt    # Requirement untuk training & EDA di laptop
 ├── .gitignore
 └── README.md
 ```
@@ -145,7 +145,7 @@ py -3.13 -m venv .venv
 
 # Pasang semua dependency
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements-training.txt
 ```
 
 ### Langkah 2: Unduh Dataset (MANUAL, oleh mahasiswa)
