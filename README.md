@@ -350,5 +350,6 @@ Aplikasi ini adalah **alat bantu belajar**, bukan alat diagnosis.
 
 ## LISENSI KODE
 
-Kode proyek ini released di bawah lisensi MIT. Dataset **tetap** mengikuti
-lisensi CC BY-NC masing-masing dan **tidak** ikut di-released dalam lisensi ini.
+Kode proyek ini released di bawah lisensi **MPL-2.0** (Mozilla Public
+License 2.0). Dataset **tetap** mengikuti lisensi CC BY-NC masing-masing dan
+**tidak** ikut di-released dalam lisensi ini.

@@ -938,7 +938,7 @@ function slidePembagian(pres, info) {
 
   s.addText(
     "Dataset dan kode lisensinya terpisah. Kode proyek released di bawah " +
-    "lisensi MIT, tetapi dataset tetap mengikuti lisensinya sendiri " +
+    "lisensi MPL-2.0, tetapi dataset tetap mengikuti lisensinya sendiri " +
     "(HAM10000: CC BY-NC 4.0; PAD-UFES-20: CC BY 4.0) dan WAJIB disitasi " +
     "di laporan dan di aplikasi.",
     { x: 0.55, y: 6.4, w: 12.2, h: 0.6, fontSize: 10, italic: true,
