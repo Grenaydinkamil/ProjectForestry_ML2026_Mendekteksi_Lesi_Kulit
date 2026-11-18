@@ -24,6 +24,7 @@ Jalankan:
 
 from __future__ import annotations
 
+import json
 import pathlib
 import sys
 
@@ -38,12 +39,14 @@ UPLOAD_TEST_DIR = pathlib.Path(
 
 # Elemen yang HARUS ada di halaman utama
 WAJIB_HALAMAN = [
+    "DermAssist Clinical",
     "Skrining Risiko Lesi Kulit dari Foto",
     "alat bantu belajar",
-    "Unggah foto",
-    "Panduan memotret",
+    "Unggah Foto",
+    "Gunakan Sampel",
+    "Cara Memotret",
     "Privasi",
-    "Model yang dipakai",
+    "MobileNetV2",
 ]
 
 
@@ -58,21 +61,46 @@ def teks_semua(at) -> str:
                 bagian.append(e.value)
             except Exception:  # noqa: BLE001
                 pass
+    # Label tab tidak punya atribut .value, jadi dibaca terpisah.
+    bagian.extend(t.label for t in at.tabs)
     return "\n".join(bagian)
+
+
+def baca_grafik(at) -> tuple[int, list[str]]:
+    """
+    Mengambil jumlah batang dan warna dari grafik Plotly.
+
+    Sejak UI memakai Plotly, batang tidak lagi berupa div HTML, jadi
+    pemeriksaan harus membaca spesifikasi figure yang dikirim Streamlit.
+    """
+    grafik = at.get("plotly_chart")
+    if not grafik:
+        return 0, []
+    try:
+        spec = json.loads(grafik[0].proto.spec)
+        data = spec.get("data", [])
+        if not data:
+            return 0, []
+        batang = data[0]
+        jumlah = len(batang.get("y") or batang.get("x") or [])
+        warna = batang.get("marker", {}).get("color", [])
+        return jumlah, list(warna)
+    except (ValueError, KeyError, TypeError):
+        return 0, []
 
 
 def cek_html_bocor(at) -> list[str]:
     """
     Mencari markdown yang merender tag HTML mentah ke pengguna.
 
-    Blok yang SENGAJA memakai HTML (disclaimer, privacy-note) akan
-    terdeteksi juga, jadi kita kecualikan baris di dalam blok Those.
+    Teks dan kartu yang SENGAJA memakai HTML/komponen boleh memuat
+    markup, jadi blok yang memang dirancang begitu dikecualikan.
     """
     bocor = []
     for daftar in (at.markdown, at.sidebar.markdown):
         for e in daftar:
             v = e.value
-            if 'class="privacy-note"' in v or 'class="disclaimer"' in v:
+            if v.lstrip().startswith(("<style", "<h1")):
                 continue
             for baris in v.split("\n"):
                 s = baris.strip()
@@ -135,22 +163,33 @@ def main() -> int:
         print("    [OK] Upload tidak menyebabkan exception")
 
     teks2 = teks_semua(at2)
-    for kunci in ["Probabilitas per kelas", "Diagnosis paling mungkin"]:
+    for kunci in ["Probabilitas per kelas", "Risiko ganas"]:
         ada = kunci.lower() in teks2.lower()
         if not ada:
             gagal += 1
         print(f"    {'[OK]' if ada else '[X]'} '{kunci}'")
 
-    # Bar probabilitas dihitung dari blok yang benar-benar berisi bar.
-    # CSS di atas juga mengandung teks "bar-row" (definisi .bar-row), jadi
-    # kita hanya menghitung blok yang diawali dengan <div class="bar-row">.
-    n_bar = sum(
-        e.value.count('<div class="bar-row">')
-        for e in at2.markdown
-    )
-    print(f"    {'[OK]' if n_bar == 7 else '[X]'} Bar probabilitas: "
+    # Grafik probabilitas harus memuat tujuh batang: satu per kelas.
+    n_bar, warna = baca_grafik(at2)
+    print(f"    {'[OK]' if n_bar == 7 else '[X]'} Batang grafik Plotly: "
           f"{n_bar} (harus 7, satu per kelas)")
     if n_bar != 7:
+        gagal += 1
+
+    # Warna wajib membawa makna: teal untuk jinak, rose untuk ganas.
+    ada_teal = "#0D9488" in warna
+    ada_rose = "#E11D48" in warna
+    print(f"    {'[OK]' if ada_teal and ada_rose else '[X]'} Warna grafik: "
+          f"teal={ada_teal}, rose={ada_rose}")
+    if not (ada_teal and ada_rose):
+        gagal += 1
+
+    # Kartu metrik dan lencana status adalah komponen UI pihak ketiga;
+    # AppTest melihatnya sebagai elemen generik, bukan markdown.
+    n_komponen = len(at2.get("bidi_component"))
+    print(f"    {'[OK]' if n_komponen >= 4 else '[X]'} Komponen UI: "
+          f"{n_komponen} (lencana versi, 2 kartu metrik, lencana status)")
+    if n_komponen < 4:
         gagal += 1
 
     if "bukan diagnosis" in teks2.lower():
@@ -215,11 +254,8 @@ def main() -> int:
             else:
                 print("    [OK] Contoh gambar bisa dipilih tanpa exception")
 
-            n_bar4 = sum(
-                e.value.count('<div class="bar-row">')
-                for e in at4.markdown
-            )
-            print(f"    {'[OK]' if n_bar4 == 7 else '[X]'} Bar probabilitas "
+            n_bar4, _ = baca_grafik(at4)
+            print(f"    {'[OK]' if n_bar4 == 7 else '[X]'} Batang grafik "
                   f"dari contoh: {n_bar4} (harus 7)")
             if n_bar4 != 7:
                 gagal += 1

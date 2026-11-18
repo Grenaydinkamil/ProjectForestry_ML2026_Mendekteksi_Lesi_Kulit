@@ -1,0 +1,28 @@
+# =============================================================================
+# .streamlit/config.toml  -  Konfigurasi tampilan Streamlit
+# =============================================================================
+# Tema kustom yang mengikuti identitas visual aplikasi:
+# latar paper hangat, teks gelap, aksen biru Slate.
+# Nilai warna dipilih agar kontras teks mencapai WCAG AA.
+
+[theme]
+primaryColor = "#2F5D7C"
+backgroundColor = "#FBFAF7"
+secondaryBackgroundColor = "#F2F0EA"
+textColor = "#1A1D21"
+font = "sans serif"
+
+[server]
+# Batas ukuran upload. Sesuai batas validasi di app.py (10 MB).
+maxUploadSize = 10
+
+# Matikan statistik penggunaan supaya tidak ada telemetri ke luar.
+# Ini sesuai janji "foto tidak dikirim ke pihak ketiga".
+enableCORS = false
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
+
+[client]
+showErrorDetails = false

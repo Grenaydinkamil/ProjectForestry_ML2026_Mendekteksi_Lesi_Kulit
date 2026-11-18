@@ -50,6 +50,9 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+# Berkas kunci LibreOffice dibuat otomatis saat dokumen dibuka dan tidak
+# pernah perlu masuk repo.
+.~lock.*#
 
 # --- Rahasia & log ------------------------------------------------------
 .env

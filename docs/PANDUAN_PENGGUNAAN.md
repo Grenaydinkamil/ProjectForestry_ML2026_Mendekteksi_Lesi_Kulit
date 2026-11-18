@@ -51,7 +51,7 @@ cd ML2026_Kelas_3_Kelompok_1_LesiKulit
 py -3.13 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements-training.txt
 ```
 
 **Linux / macOS / WSL:**
@@ -59,7 +59,7 @@ pip install -r requirements.txt
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements-training.txt
 ```
 
 ### 3.3 Verifikasi instalasi
@@ -228,7 +228,7 @@ ambang risiko ganas, dan sumber dataset lengkap dengan lisensinya.
 | "File bukan gambar..." | File rusak atau ekstensi salah | Pakai JPG/PNG asli, bukan file teks yang diganti ekstensinya |
 | "Ukuran file melebihi batas 10 MB" | Foto terlalu besar | Kecilkan resolusi atau pakai contoh gambar |
 | Prediksi aneh pada foto smartphone | Domain shift | Pakai foto dermoskop dengan lesi di tengah dan cahaya merata |
-| `ModuleNotFoundError` | Virtual environment belum aktif | Aktifkan `.venv` lalu `pip install -r requirements.txt` |
+| `ModuleNotFoundError` | Virtual environment belum aktif | Aktifkan `.venv` lalu `pip install -r requirements-training.txt` |
 | Port 8501 sudah dipakai | Ada Streamlit lain berjalan | `streamlit run app/app.py --server.port 8502` |
 
 ---
@@ -239,8 +239,10 @@ Panduan lengkap ada di `docs/PANDUAN_DEPLOY.md`. Ringkasannya:
 
 1. Unggah kode ke GitHub (**jangan** unggah `data/`).
 2. Buka Streamlit Community Cloud, hubungkan repository.
-3. Pilih `app/app.py` sebagai entry point.
-4. Tambahkan `requirements.txt` dari folder `app/`.
+3. Pilih `app/app.py` sebagai entry point, branch `main`.
+4. Di **Advanced settings**, pilih **Python 3.13**. Platform menemukan
+   `app/requirements.txt` sendiri karena letaknya sefolder dengan entry
+   point; tidak perlu menambah file requirements lain.
 5. Perhatikan batas RAM 1 GB pada tier gratis; alternatifnya Hugging Face
    Spaces dengan RAM lebih besar.
 
@@ -288,7 +290,7 @@ dokumen.
 # Instalasi
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+pip install -r requirements-training.txt
 
 # Cek environment
 python scripts/check_environment.py

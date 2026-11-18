@@ -1,16 +1,18 @@
 # =============================================================================
 # app/requirements.txt  -  Requirement untuk DEPLOY aplikasi Streamlit
 # =============================================================================
-# Bedakan dengan requirements.txt di root:
-#   - requirements.txt (root)  -> untuk TRAINING di laptop (butuh jupyter, dsb)
-#   - requirements.txt (app/)   -> untuk DEPLOY di Streamlit Community Cloud
+# Bedakan dengan requirements-training.txt di root:
+#   - requirements-training.txt (root) -> untuk TRAINING di laptop (butuh
+#     jupyter, matplotlib, dan paket pelatihan lain)
+#   - requirements.txt (app/)          -> untuk DEPLOY di Streamlit
+#     Community Cloud
 #
 # Kenapa pakai tensorflow-cpu, bukan tensorflow?
-#   -tensorflow (full) menarik CUDA toolkit ~3 GB. Platform deploy biasanya
-#     punya RAM dan kuota yang terbatas, dan tidak bisa memakai GPU lokal.
+#   - tensorflow (full) menarik CUDA toolkit ~3 GB. Platform deploy
+#     biasanya punya RAM dan kuota terbatas, dan server tidak punya GPU.
 #   - tensorflow-cpu hanya ~200 MB dan cukup untuk INFERENCE.
 #   - Model .keras yang sudah dilatih TIDAK berubah karena memakai
-#     tensorflow-cpu. Yang berubah hanyaKecepatan inferensinya.
+#     tensorflow-cpu. Yang berubah hanya kecepatan inferensinya.
 #   - Streamlit Community Cloud juga punya batas ukuran dependensi, jadi
 #     semakin kecil semakin aman.
 #
@@ -20,6 +22,8 @@
 
 tensorflow-cpu==2.21.0
 streamlit==1.67.0
+streamlit-shadcn-ui==1.5.0
+plotly==7.1.0
 numpy==2.5.4
 pillow==13.0.0
 scikit-learn==1.9.1

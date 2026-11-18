@@ -1,16 +1,19 @@
 # =============================================================================
 # .streamlit/config.toml  -  Konfigurasi tampilan Streamlit
 # =============================================================================
-# Tema kustom yang mengikuti identitas visual aplikasi:
-# latar paper hangat, teks gelap, aksen biru Slate.
-# Nilai warna dipilih agar kontras teks mencapai WCAG AA.
+# Palet "Teal & Warm Alabaster" untuk DermAssist Clinical:
+#   - latar kertas hangat, bukan putih dingin
+#   - teal sebagai aksen utama (judul, tombol, grafik jinak)
+#   - rose dipakai khusus untuk tanda ganas di grafik
+# Nilai warna dipilih agar teks utama dan teks sekunder mencapai WCAG AA.
+# Detail pasangan kontras diuji oleh scripts/audit_kontras.py.
 
 [theme]
-primaryColor = "#2F5D7C"
-backgroundColor = "#FBFAF7"
-secondaryBackgroundColor = "#F2F0EA"
-textColor = "#1A1D21"
-font = "sans serif"
+primaryColor = "#0D9488"
+backgroundColor = "#FAF9F6"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#1C1917"
+font = "sans-serif"
 
 [server]
 # Batas ukuran upload. Sesuai batas validasi di app.py (10 MB).

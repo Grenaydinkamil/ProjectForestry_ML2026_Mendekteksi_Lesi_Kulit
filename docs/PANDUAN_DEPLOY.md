@@ -21,16 +21,16 @@ proyek ini (bukan tebakan):
 **Alasan memilih Streamlit Community Cloud:**
 1. **Gratis** dan tidak minta kartu kredit.
 2. **Deploy dari GitHub** dalam 5 klik, tanpa upload manual.
-3. **Natively mendukung Streamlit**, jadi tidak ada konfigurasi reverse proxy.
+3. **Dukungan Streamlit bawaan**, jadi tidak ada konfigurasi reverse proxy.
 4. Ter-integrasi dengan GitHub Actions (CI/CD otomatis).
 
 **Keterbatasan yang harus diketahui:**
-- **RAM 1 GB.** Model MobileNetV2 + TensorFlow + Streamlit akan consuming
+- **RAM 1 GB.** Model MobileNetV2 + TensorFlow + Streamlit akan memakai
   sebagian besar RAM itu. Ini **risiko nyata** dan harus diuji.
 - **Cold start bisa 30-60 detik** karena paket (~400 MB) diunduh tiap kali
   server dinyalakan.
 - **Ukuran repo dibatasi 1 GB.** Model `.keras` masuk repo, tapi ukurannya
-  kecil (~14 MB untuk MobileNetV2), jadi aman.
+  kecil (9,3 MB untuk MobileNetV2), jadi aman.
 - **Dataset TIDAK boleh di-commit.** Repo kita 2,6 GB dataset, jauh melebihi
   batas. `.gitignore` sudah mengexclude `data/`.
 
@@ -79,13 +79,25 @@ Buka `http://localhost:8501`, unggah beberapa gambar uji, dan pastikan:
 Alasannya: package `tensorflow` menarik CUDA toolkit ~3 GB yang tidak akan
 dipakai di server, dan bisa membuat deploy gagal karena ukuran.
 
+File itu juga memuat `streamlit-shadcn-ui==1.5.0` dan `plotly==7.1.0`
+karena antarmuka memakai komponen kartu/lencana dan grafik probabilitas.
+Keduanya ringan (total di bawah 15 MB) dan punya wheel untuk Linux.
+
 ### 2.4 Cek ukuran repo
 
 ```powershell
 git count-objects -vH
+# atau, lebih cepat:
+python scripts/simulasi_deploy.py
 ```
 
-Kalau repo > 1 GB, pastikan `data/` tidak ikut ter-commit:
+Repo ini berisi **147 file, sekitar 97,5 MB**. Batas Streamlit Community
+Cloud adalah 1 GB per repo dan 200 MB per berkas, jadi masih jauh di bawah
+batas. Yang paling besar adalah `models/cnn_best.keras` (25,3 MB) dan
+`models/rf_hog.joblib` (54,1 MB).
+
+Kalau nanti ukuran repo melewati 1 GB, hampir pasti `data/` ikut ter-commit.
+Cek dengan:
 
 ```powershell
 git check-ignore -v data/raw/HAM10000_metadata.csv
@@ -97,12 +109,17 @@ git check-ignore -v data/raw/HAM10000_metadata.csv
 
 ### Langkah 1: Push ke GitHub
 
+Repo proyek ini sudah ada di GitHub:
+
+```text
+https://github.com/Grenaydinkamil/ProjectForestry_ML2026_Mendekteksi_Lesi_Kulit
+```
+
+Kalau kamu memakai repo baru, ganti remote-nya:
+
 ```powershell
 cd <path-ke-repo>
-git init
-git add .
-git commit -m "Proyek ML: klasifikasi lesi kulit"
-git remote add origin https://github.com/<USERNAME>/<NAMA-REPO>.git
+git remote set-url origin https://github.com/<USERNAME>/<NAMA-REPO>.git
 git push -u origin main
 ```
 
@@ -121,26 +138,35 @@ git status --short
 ### Langkah 3: Deploy
 
 1. Klik **"New app"**
-2. Pilih repository GitHub yang baru di-push
+2. Pilih repository `Grenaydinkamil/ProjectForestry_ML2026_Mendekteksi_Lesi_Kulit`
 3. Branch: `main`
 4. **Main file path**: `app/app.py`
-5. **Python version**: pilih yang tersedia (3.12 atau 3.13)
+5. Buka **"Advanced settings"** lalu pilih **Python 3.13**
 6. Klik **"Deploy"**
 
-### Langkah 4: Atur dependensi (jika perlu)
+### Langkah 4: Dependensi dan versi Python
 
-Streamlit membaca `requirements.txt` dari **root repository**. Karena
-project kita punya dua file requirements, tambahkan file ini di root:
+Streamlit Community Cloud mencari file dependensi **mulai dari folder
+entrypoint, lalu root**, dan **hanya membaca file pertama yang ditemukan**.
+Karena entrypoint adalah `app/app.py`, platform membaca
+`app/requirements.txt`. Repo ini sengaja hanya punya **satu**
+`requirements.txt`; file untuk training di root bernama
+`requirements-training.txt` supaya tidak mungkin salah pilih.
 
-```txt
-# requirements.txt (root) - sudah ada, tapi tambahkan tensorflow-cpu
+Verifikasi sendiri:
+
+```powershell
+git ls-files | Select-String "requirements.txt$"
+# harus menghasilkan satu baris: app/requirements.txt
 ```
 
-Sebaiknya buat file `runtime.txt` atau `.python-version` di root:
+**Versi Python** dipilih lewat dropdown **"Python version"** di modal
+**"Advanced settings"**, bukan lewat `runtime.txt` atau `.python-version`.
+Pilih **3.13** karena itu versi yang dipakai saat training dan semua paket
+sudah di-pin ke versi yang punya wheel Linux untuk 3.13 (dicek oleh
+`scripts/cek_wheel_linux.py`).
 
-```
-3.13
-```
+Tidak perlu `packages.txt` karena aplikasi tidak butuh dependensi apt-get.
 
 ### Langkah 5: Verifikasi
 
@@ -153,17 +179,30 @@ Sebaiknya buat file `runtime.txt` atau `.python-version` di root:
 
 ## 4. MENGATUR UKURAN MODEL (BILANGAN PERLU)
 
-Model MobileNetV2 dalam format `.keras` berukuran sekitar 14 MB. Ini **jauh
-di bawah batas 100 MB per file** di GitHub, jadi **tidak perlu Git LFS**.
+Model yang dipakai aplikasi, `models/mobilenetv2_best.keras`, berukuran
+**9,3 MB**. Ini **jauh di bawah batas 100 MB per file** di GitHub, jadi
+**tidak perlu Git LFS**.
+
+Berkas model lain di repo ini:
+
+| Berkas | Ukuran | Dipakai aplikasi? |
+|---|---|---|
+| `mobilenetv2_best.keras` | 9,3 MB | **Ya** |
+| `cnn_best.keras` | 25,3 MB | Tidak (pembanding) |
+| `rf_hog.joblib` | 54,1 MB | Tidak (pembanding) |
+| `svm_hog.joblib` | 15,2 MB | Tidak (pembanding) |
+
+Semua tetap di-commit karena laporan membandingkan empat model. Total repo
+tetap di bawah 100 MB.
 
 Kalau nanti model jadi jauh lebih besar (misal ensemble beberapa model),
 ada tiga opsi:
 
 | Opsi | Ukuran | Trade-off |
 |---|---|---|
-| **.keras apa adanya** | ~14 MB | Paling mudah, recommended |
-| **Git LFS** | ~14 MB |butuh akun LFS (gratis 1 GB), repo jadi lebih rumit |
-| **TFLite** | ~4 MB (kuantisasi) | Kecepatan inferensi naik 2-3x, tapi **akurasi bisa turun 1-2%** dan pre-processing harus pakai operator TFLite |
+| **.keras apa adanya** | ~9 MB | Paling mudah, disarankan |
+| **Git LFS** | ~9 MB | Butuh akun LFS (gratis 1 GB), repo jadi lebih rumit |
+| **TFLite** | ~3 MB (kuantisasi) | Kecepatan inferensi naik 2-3x, tapi **akurasi bisa turun 1-2%** dan pre-processing harus pakai operator TFLite |
 
 **Rekomendasi: jangan pakai TFLite** untuk project ini. Alasannya:
 - Kecepatan inferensi di Streamlit Community Cloud sudah cukup (prediksi
@@ -208,12 +247,14 @@ git push
 1. Pindah ke Hugging Face Spaces (RAM 16 GB)
 2. Atau pakai model klasik (SVM/RF) yang hanya butuh sklearn
 
-### Error: `No matching distribution found for tensorflow`
+### Error: `No matching distribution found for tensorflow-cpu`
 
-**Penyebab:** versi Python di platform tidak cocok.
+**Penyebab:** versi Python di platform tidak cocok dengan versi paket yang
+di-pin.
 
-**Solusi:** tambah `runtime.txt` atau `.python-version` di root repo berisi
-`3.13`.
+**Solusi:** buka **"Advanced settings"** pada halaman deploy, pilih
+**Python 3.13**, lalu deploy ulang. `runtime.txt` dan `.python-version`
+tidak dibaca untuk pemilihan versi Python di Streamlit Community Cloud.
 
 ### App lambat banget (cold start)
 
@@ -245,10 +286,10 @@ selalu berhasil. Pastikan dengan mencoba **sebelum hari presentasi**.
 | `data/raw/` | Lisensi non-komersial + 2,6 GB | Ya |
 | `data/external/` | Lisensi + 3,4 GB | Ya |
 | `data/processed/*.npy` | 311 MB, bisa di-generate ulang | Ya |
-| `.venv/` | Berisi thousand file, tidak portable | Ya |
+| `.venv/` | Berisi ribuan file, tidak portable | Ya |
 | `models/*.npy`, `*.pkl` | besar, bisa di-generate ulang | Ya |
-| `models/*.keras` | **BOLEH di-commit** (14 MB) | Tidak (sengaja) |
-| `models/*.joblib` | **BOLEH di-commit** ( SVM ~10 MB) | Tidak (sengaja) |
+| `models/*.keras` | **BOLEH di-commit** (9-26 MB per berkas) | Tidak (sengaja) |
+| `models/*.joblib` | **BOLEH di-commit** (SVM 15,2 MB; RF 54,1 MB) | Tidak (sengaja) |
 
 > **Catatan lisensi:** dataset tetap milik pemegangnya dan lisensinya
 > (CC BY-NC untuk HAM10000, CC BY untuk PAD-UFES-20) tidak berubah karena

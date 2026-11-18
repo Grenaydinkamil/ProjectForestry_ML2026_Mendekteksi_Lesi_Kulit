@@ -35,6 +35,7 @@ PAD-UFES-20) sebagai uji eksternal.
 | `docs/LAPORAN_PROJECT_FINAL.md` | **Laporan formal proyek**: bab 1–6, abstrak, tinjauan pustaka, metodologi, hasil, pembahasan, kesimpulan, daftar pustaka, dan lampiran status proyek | Dosen, laporan tertulis, tanya jawab mendalam |
 | `docs/PANDUAN_PENGGUNAAN.md` | **Cara pakai produk**: instalasi, menjalankan aplikasi, membaca hasil, contoh alur demo, pemecahan masalah, deploy | Pengguna aplikasi, pilot demo |
 | `docs/AUDIT_STREAMLIT_ANTISLOP.md` | Hasil audit skill Streamlit resmi + antislop, delivery gate | Reviewer kode, tanya jawab kualitas UI |
+| `docs/Laporan_Perubahan_UI_DermAssist.docx` | **Laporan perubahan antarmuka**: cadangan, tabel sebelum/sesudah, bukti logika backend tidak disentuh, hasil uji | Dosen, bukti proses rombak UI |
 | `docs/REKAP_LAPORAN.md` | Ringkasan angka hasil (dibangun otomatis dari log) | Cek cepat angka |
 | `docs/CATATAN_TEMUAN_DIAGNOSTIK.md` | 13 bug dan eksperimen yang membentuk keputusan desain | Pembahasan teknis |
 | `docs/PERSIAPAN_TANYA_JAWAB.md` | 40+ pertanyaan beserta bukti file | Latihan presentasi |
@@ -315,10 +316,11 @@ ke kodenya.
 - **Lisensi:** **CC BY-NC 4.0**
 - **Kegunaan:** **hanya untuk uji eksternal**, tidak untuk training.
 
-> **Catatan kepatuhan:** repository ini tidak memuat data maupun bobot model
-> yang berasal dari dataset berlisensi. Pengguna yang memakai proyek ini untuk
-> keperluan akademik **wajib mencantumkan kedua sitasi di atas** di laporan dan
-> di aplikasi.
+> **Catatan kepatuhan:** repository ini tidak memuat data mentah dari kedua
+> dataset. Bobot model yang dilatih pada HAM10000 ikut disertakan agar demo
+> bisa dijalankan, dan penggunaannya tetap terikat lisensi non-komersial
+> dataset asalnya. Pengguna yang memakai proyek ini untuk keperluan akademik
+> **wajib mencantumkan kedua sitasi di atas** di laporan dan di aplikasi.
 
 ---
 
@@ -329,10 +331,11 @@ Aplikasi ini adalah **alat bantu belajar**, bukan alat diagnosis.
 - Hasil **"tidak ganas" TIDAK berarti lesi aman.** Model bisa salah, terutama
   untuk melanoma yang tampil atypikal.
 - **Segera periksakan ke dokter kulit** bila lesi berubah bentuk, warna, atau
-  ukuran, berdarah, Persistent_questionable, atau terasañas.
-- Model dilatih pada data dermoskopi dengan **populasi terbatas** (kulit putih,
-  Dominan Derived Europe), **tanpa validasi klinis**, dan **tidakmencakup** variasi
-  kulit gelap Fitzpatrick III-V yang lebih umum di Indonesia.
+  ukuran, berdarah, atau terasa tidak nyaman.
+- Model dilatih pada data dermoskopi dengan **populasi terbatas** (mayoritas
+  kulit terang, dominan Eropa), **tanpa validasi klinis**, dan **tidak
+  mencakup** variasi kulit gelap Fitzpatrick III-V yang lebih umum di
+  Indonesia.
 - Efektivitas alat skrining **tidak boleh** dianggap menggantikan pemeriksaan
   klinis oleh dokter.
 
@@ -350,10 +353,10 @@ Aplikasi ini adalah **alat bantu belajar**, bukan alat diagnosis.
 
 ## LISENSI KODE
 
-Kode proyek ini released di bawah lisensi **MPL-2.0** (Mozilla Public
+Kode proyek ini dirilis di bawah lisensi **MPL-2.0** (Mozilla Public
 License 2.0), teks lengkapnya ada di berkas `LICENSE`.
 
-Dataset **tidak** ikut di-released dalam lisensi ini dan tetap mengikuti
+Dataset **tidak** ikut dirilis dalam lisensi ini dan tetap mengikuti
 lisensinya masing-masing:
 
 | Dataset | Lisensi | Batas penggunaan |
