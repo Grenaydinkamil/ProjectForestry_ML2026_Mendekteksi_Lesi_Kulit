@@ -193,6 +193,7 @@ Verifikasi terakhir:
 | `python scripts/simulasi_deploy.py` | LULUS: 147 berkas, 97,5 MB, aplikasi boot dari checkout bersih |
 | Browser Edge 1440 px | 0 console error, 7 batang, fill `rgb(13,148,136)` dan `rgb(225,29,72)` |
 | Browser Edge 390/768/1024 px | Tidak ada overflow horizontal |
+| Deploy Streamlit Community Cloud (Python 3.13) | Live di `projectforestryml2026mendekteksilesikulit-vvearxur6nuwga44fmaf.streamlit.app`. Build pertama gagal karena `tqdm` belum ada di requirements; sudah diperbaiki, dan sekarang ada pemeriksa `scripts/cek_import_runtime.py` |
 
 ### Batasan yang jujur
 

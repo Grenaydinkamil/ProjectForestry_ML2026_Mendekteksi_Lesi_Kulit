@@ -4,6 +4,9 @@
 
 Machine Learning Project - Mata Kuliah Pembelajaran Mesin (ML2026)
 
+**Aplikasi daring (Streamlit Community Cloud):**
+<https://projectforestryml2026mendekteksilesikulit-vvearxur6nuwga44fmaf.streamlit.app>
+
 ---
 
 ## RINGKASAN PROYEK

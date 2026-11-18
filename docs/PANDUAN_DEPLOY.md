@@ -115,6 +115,12 @@ Repo proyek ini sudah ada di GitHub:
 https://github.com/Grenaydinkamil/ProjectForestry_ML2026_Mendekteksi_Lesi_Kulit
 ```
 
+Aplikasi yang berhasil di-deploy (Python 3.13) ada di:
+
+```text
+https://projectforestryml2026mendekteksilesikulit-vvearxur6nuwga44fmaf.streamlit.app
+```
+
 Kalau kamu memakai repo baru, ganti remote-nya:
 
 ```powershell
@@ -238,6 +244,21 @@ git add models/
 git commit -m "Tambahkan model terlatih"
 git push
 ```
+
+### Error: `ModuleNotFoundError` saat build di Streamlit Community Cloud
+
+**Penyebab:** ada modul di `src/` yang mengimpor paket di level modul, dan
+paket itu tidak tercatat di `app/requirements.txt`. Contoh nyata pada
+proyek ini: `src/features.py` mengimpor `tqdm`, padahal aplikasi memakai
+model deep learning sehingga fiturnya tidak pernah dipanggil.
+
+**Solusi:**
+1. Tambahkan paketnya ke `app/requirements.txt` dan deploy ulang.
+2. Jalankan `python scripts/cek_import_runtime.py`. Skrip ini menelusuri
+   rantai import aplikasi (app/app.py -> src/predictor.py -> src/features.py
+   -> src/config.py) lalu memastikan semua paketnya ada di requirements.
+   Pemeriksaan ini sudah dipasangkan di `scripts/verify_final.py` dan
+   `scripts/simulasi_deploy.py`.
 
 ### Error: `OutOfMemory` saat app start
 
