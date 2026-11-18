@@ -15,6 +15,10 @@ Pemeriksaan yang dilakukan:
   8. `build_ppt.js`              -> membangun ulang PPT dari log
   9. `build_rekap.py`            -> membangun ulang rekap laporan
 
+Tambahan:
+  7b. `audit_kontras.py`         -> rasio kontras WCAG tema
+  7c. `cek_import_runtime.py`    -> semua import runtime ada di requirements
+
 Jalankan:
     python scripts/verify_final.py
 """
@@ -77,6 +81,8 @@ def main() -> int:
          [py, str(SCRIPTS / "cek_uncertain.py")]),
         ("7b. Audit kontras WCAG (antislop R-25)",
          [py, str(SCRIPTS / "audit_kontras.py")]),
+        ("7c. Paket runtime tercakup app/requirements.txt",
+         [py, str(SCRIPTS / "cek_import_runtime.py")]),
         ("8. Bangun ulang PPT versi 1 (14 slide)",
          [node, str(SCRIPTS / "build_ppt.js")]),
         ("9. Bangun ulang PPT versi 2 (12 slide)",

@@ -6,12 +6,13 @@ Simulasi deploy ke Streamlit Community Cloud, sebelum upload.
 Kenapa perlu?
   Deploy ke cloud tidak bisa diulang dengan mudah, dan kesalahannya
   baru ketahuan setelah repository sudah publicly tersedia. Skrip ini
-  reproducing apa yang terjadi di server:
+  meniru apa yang terjadi di server:
 
     1. Mengekspor isi git ke folder BERSIH (hanya berkas yang ter-commit)
     2. Menjalankan aplikasi dari folder itu
     3. Memastikan model, konfigurasi, dan contoh gambar terbaca
     4. Menjalankan uji isi aplikasi (AppTest) dari folder simulasi
+    5. Memastikan semua paket yang diimpor runtime ada di requirements
 
   Kalau langkah ini lulus, kemungkinan besar deploy-nya juga lulus.
 
@@ -129,6 +130,23 @@ def main() -> int:
         for baris in gagal.splitlines()[-12:]:
             print("       " + baris)
         hilang.append("uji aplikasi")
+
+    # 6. Semua paket yang diimpor runtime harus ada di requirements.
+    #    Ini yang menangkap bug tqdm: deploy gagal karena satu paket
+    #    hilang, padahal semua pemeriksaan lokal lulus.
+    print("\n[6] Paket runtime tercakup requirements.txt")
+    r = jalankan([sys.executable,
+                  str(simulasi / "scripts" / "cek_import_runtime.py")],
+                 cwd=simulasi)
+    lulus = r.returncode == 0 and "LOLUS" in (
+        (r.stdout or "") + (r.stderr or ""))
+    print(f"    {'[OK]  ' if lulus else '[X]   '}Import runtime "
+          f"tercakup app/requirements.txt")
+    if not lulus:
+        gagal = (r.stdout or "") + (r.stderr or "")
+        for baris in gagal.splitlines()[-12:]:
+            print("       " + baris)
+        hilang.append("paket runtime")
 
     # Ringkasan
     print("\n" + "=" * 72)

@@ -32,3 +32,6 @@ scipy==1.18.1
 joblib==1.6.0
 pandas==3.1.1
 matplotlib==3.11.2
+# src/features.py mengimpor tqdm pada modul level, jadi paket ini wajib ada
+# walau aplikasinya memakai model deep learning.
+tqdm==4.70.1
