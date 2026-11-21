@@ -1,0 +1,31 @@
+# =============================================================================
+# .streamlit/config.toml  -  Konfigurasi tampilan Streamlit
+# =============================================================================
+# Palet "Teal & Warm Alabaster" untuk DermAssist Clinical:
+#   - latar kertas hangat, bukan putih dingin
+#   - teal sebagai aksen utama (judul, tombol, grafik jinak)
+#   - rose dipakai khusus untuk tanda ganas di grafik
+# Nilai warna dipilih agar teks utama dan teks sekunder mencapai WCAG AA.
+# Detail pasangan kontras diuji oleh scripts/audit_kontras.py.
+
+[theme]
+primaryColor = "#0D9488"
+backgroundColor = "#FAF9F6"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#1C1917"
+font = "sans-serif"
+
+[server]
+# Batas ukuran upload. Sesuai batas validasi di app.py (10 MB).
+maxUploadSize = 10
+
+# Matikan statistik penggunaan supaya tidak ada telemetri ke luar.
+# Ini sesuai janji "foto tidak dikirim ke pihak ketiga".
+enableCORS = false
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
+
+[client]
+showErrorDetails = false

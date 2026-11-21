@@ -65,6 +65,32 @@ Lencana versi memakai varian `outline`; lencana ganas memakai
 
 ---
 
+## 2b. Catatan batas input (21 November 2026)
+
+Setelah ada laporan bahwa foto wajah dianggap lesi ganas, ditambahkan
+satu caption di kartu input:
+
+> **Input yang didukung:** foto lesi kulit dari dekat. Foto wajah,
+> tangkapan layar, atau gambar tanpa lesi yang jelas dapat menghasilkan
+> prediksi yang menyesatkan. Contoh foto yang sesuai ada di tab Gunakan
+> Sampel.
+
+Alasannya tertulis di komentar `app/app.py`: model dilatih hanya pada foto
+dermoskopi, jadi gambar di luar domain dipaksa menjadi salah satu dari
+tujuh kelas. Catatan ini **hanya UI/UX**. Tidak ada perubahan pada model,
+preprocessing, ambang 0,11, atau `PR.predict`.
+
+| Pemeriksaan | Hasil |
+|---|---|
+| `git diff -- app/app.py` | Hanya penambahan satu `st.caption` dan komentar alasannya |
+| `git status -- src models` | Kosong |
+| `test_app_content.py` | Lulus, exit 0 |
+| `audit_kontras.py` | Lulus, 0 gagal |
+| Browser Edge 1440 px dan 390 px | Caption terlihat, `scrollWidth == innerWidth`, 0 page error |
+| Backup sebelum edit | `backup_ui_2026-11-21/app_backup.py` dan `config_backup.toml` |
+
+---
+
 ## 3. Perubahan dibanding versi 17 November
 
 | Area | Sebelum | Sesudah |

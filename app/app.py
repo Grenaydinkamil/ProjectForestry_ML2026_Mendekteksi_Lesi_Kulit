@@ -361,6 +361,16 @@ with col_input:
     with st.container(border=True):
         st.subheader("Foto lesi")
 
+        # Model hanya dilatih pada foto lesi dari dekat. Tanpa batas ini,
+        # gambar di luar domain (wajah, tangkapan layar) tetap dipaksa
+        # menjadi salah satu dari 7 kelas dan tampak seperti hasil yakin.
+        st.caption(
+            "**Input yang didukung:** foto lesi kulit dari dekat. Foto wajah, "
+            "tangkapan layar, atau gambar tanpa lesi yang jelas dapat "
+            "menghasilkan prediksi yang menyesatkan. Contoh foto yang "
+            "sesuai ada di tab Gunakan Sampel."
+        )
+
         uploaded = None
         nama_contoh = None
         pakai_contoh = False
