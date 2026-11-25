@@ -44,6 +44,7 @@ PAD-UFES-20) sebagai uji eksternal.
 | `docs/PANDUAN_PENGGUNAAN.md` | **Cara pakai produk**: instalasi, menjalankan aplikasi, membaca hasil, contoh alur demo, pemecahan masalah, deploy | Pengguna aplikasi, pilot demo |
 | `docs/AUDIT_STREAMLIT_ANTISLOP.md` | Hasil audit skill Streamlit resmi + antislop, delivery gate | Reviewer kode, tanya jawab kualitas UI |
 | `docs/Laporan_Perubahan_UI_DermAssist.docx` | **Laporan perubahan antarmuka**: cadangan, tabel sebelum/sesudah, bukti logika backend tidak disentuh, hasil uji | Dosen, bukti proses rombak UI |
+| `docs/TABEL_STUDI_LITERATUR.md` | **Tabel studi literatur**: tujuh artikel jurnal, kolom Permasalahan, Dataset, Metode, Metrik, Hasil Utama, dan Perbedaan dengan Project | Dosen, pengumpulan makalah |
 | `docs/REKAP_LAPORAN.md` | Ringkasan angka hasil (dibangun otomatis dari log) | Cek cepat angka |
 | `docs/CATATAN_TEMUAN_DIAGNOSTIK.md` | 13 bug dan eksperimen yang membentuk keputusan desain | Pembahasan teknis |
 | `docs/PERSIAPAN_TANYA_JAWAB.md` | 40+ pertanyaan beserta bukti file | Latihan presentasi |

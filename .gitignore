@@ -58,6 +58,12 @@ Thumbs.db
 .env
 *.log
 
+# --- Dokumen internal kelompok -------------------------------------------
+# Panduan deployment dipakai untuk kerja kelompok saja. Isinya catatan
+# internal yang tidak perlu reviewer, jadi sengaja tidak diunggah ke GitHub.
+docs/README_DEPLOYMENT.md
+docs/README_DEPLOYMENT.pdf
+
 # --- WSL ----------------------------------------------------------------
 # VHDX WSL bisa berukuran puluhan GB, jangan pernah di-commit.
 *.vhdx
