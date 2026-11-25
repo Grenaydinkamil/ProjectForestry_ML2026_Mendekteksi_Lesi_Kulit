@@ -547,7 +547,7 @@ with st.expander("Tentang model"):
 
 st.caption(
     "Dibangun untuk tugas akhir Mata Kuliah Pembelajaran Mesin (ML2026). "
-    "Dataset HAM10000: Tschandl dkk. (2018), Scientific Data 5:180214, "
+    "Dataset HAM10000: Tschandl dkk. (2018), Scientific Data 5:180161, "
     "lisensi CC BY-NC 4.0."
 )
 render_disclaimer()
