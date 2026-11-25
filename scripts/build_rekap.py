@@ -118,6 +118,16 @@ def main() -> int:
     w("**FN** = lesi ganas yang LOLOS (kesalahan paling berbahaya untuk "
       "skrining). **FP** = false alarm pada lesi tidak ganas.")
     w("")
+    w("**Cara membaca baris ini.** Accuracy, F1 macro, Recall ganas, dan "
+      "Specificity dihitung dari prediksi kelas atas (argmax tujuh kelas). "
+      "FN dan FP berasal dari keputusan biner ganas/jinak pada ambang yang "
+      "terkunci di tabel ambang batas di bawah. Karena itu recall ganas pada "
+      "ambang aplikasi 0,11 adalah 0,8700, bukan angka di kolom Recall ganas "
+      "yang memakai ambang default 0,50.")
+    w("")
+    w("**Kelas ganas** = mel, bcc, akiec (1.954 foto, 19,5% data). "
+      "df dan vasc adalah lesi jinak.")
+    w("")
 
     # ------------------------------------------------------------------
     w("### Ambang batas \"ganas\" (dihitung dari DATA VALIDASI)")

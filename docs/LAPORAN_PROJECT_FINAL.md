@@ -159,6 +159,15 @@ histopatologi. Seluruh gambar berasal dari kulit Fitzpatrick I-II--ini
 menjadi keterbatasan demografis yang serius karena populasi Indonesia
 didominasi Fitzpatrick III-V.
 
+**Definisi kelas ganas.** Proyek ini memakai pembagian resmi HAM10000:
+melanoma (mel), karsinoma sel basal (bcc), dan keratosis aktinik (akiec)
+masuk kategori ganas dan pre-ganas,total **1.954 foto atau 19,5% data**.
+Dermatofibroma (df) dan lesi vaskular (vasc) adalah **lesi jinak**; bobot
+kelas yang tinggi pada keduanya muncul karena kelangkaannya (115 dan 142
+foto), bukan karena status ganas. Definisi yang sama dibaca aplikasi dari
+`models/threshold_config.json`, sehingga metrik, ambang batas, dan tampilan
+aplikasi tidak mungkin memakai definisi yang berbeda.
+
 ### 3.2 Pembagian Data Anti-Kebocoran
 
 | Split | Gambar | Lesi | Proporsi |
@@ -279,11 +288,20 @@ FN meningkat 56 kasus. Karena FN ganas paling mahal dalam skrining,
 | Random Forest (HOG) | 0,7132 | 0,3240 | 0,2600 | 0,9625 | 0,20 | 25 | 481 | 6,4 ms |
 | SVM (HOG) | 0,6929 | 0,2642 | 0,2500 | 0,9470 | 0,17 | 42 | 559 | 10,2 ms |
 
+**Cara membaca tabel ini.** Accuracy, F1 macro, recall ganas, dan
+specificity dihitung dari prediksi kelas atas (argmax tujuh kelas).
+Threshold, FN, dan FP berasal dari keputusan biner ganas/jinak pada ambang
+yang dikunci dari validasi. Karena itu **recall ganas pada ambang aplikasi
+0,11 adalah 0,8700**, bukan 0,4500: dari 300 kasus ganas di data uji, 39
+lolos. Angka 0,4500 adalah recall ganas pada ambang default 0,50, yaitu
+ketika model hanya boleh memilih satu kelas teratas.
+
 MobileNetV2 terpilih dengan skor gabungan 0,7043 (bobot: recall ganas 35%,
 F1 macro 25%, kesiapan domain shift 20%, efisiensi 20%). Perlu ditekankan:
 model dengan **accuracy tertinggi** adalah Random Forest (0,7132), tetapi
-recall ganasnya hanya 0,2600--ia melewatkan 75% lesi ganas. Ini bukti
-bahwa accuracy tidak boleh jadi dasar pemilihan untuk skrining.
+recall ganasnya hanya 0,2600--ia melewatkan 75% lesi ganas pada ambang
+default. Ini bukti bahwa accuracy tidak boleh jadi dasar pemilihan untuk
+skrining.
 
 Analisis overfitting (selisih F1 train versus test): MobileNetV2 +0,0285,
 CNN +0,0221, SVM +0,0396 (semua "sedikit overfitting"), sedangkan Random

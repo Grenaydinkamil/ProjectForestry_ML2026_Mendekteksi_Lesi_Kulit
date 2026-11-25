@@ -1,6 +1,6 @@
 # Rekap Laporan Proyek
 
-**Status per 25 November 2026, 20:37.** Seluruh angka di dokumen ini diambil otomatis dari `docs/logs/*.json`, yang ditulis notebook saat dijalankan. Tidak ada angka yang diketik manual.
+**Status per 25 November 2026, 22:39.** Seluruh angka di dokumen ini diambil otomatis dari `docs/logs/*.json`, yang ditulis notebook saat dijalankan. Tidak ada angka yang diketik manual.
 
 ---
 
@@ -16,6 +16,10 @@ Test set berisi **1527 gambar** dan dipakai **SEKALI** di Notebook 07, setelah s
 | SVM (HOG) | 0,6929 | 0,2642 | 0,2500 | 0,9470 | 42 | 559 | 10,2 ms |
 
 **FN** = lesi ganas yang LOLOS (kesalahan paling berbahaya untuk skrining). **FP** = false alarm pada lesi tidak ganas.
+
+**Cara membaca baris ini.** Accuracy, F1 macro, Recall ganas, dan Specificity dihitung dari prediksi kelas atas (argmax tujuh kelas). FN dan FP berasal dari keputusan biner ganas/jinak pada ambang yang terkunci di tabel ambang batas di bawah. Karena itu recall ganas pada ambang aplikasi 0,11 adalah 0,8700, bukan angka di kolom Recall ganas yang memakai ambang default 0,50.
+
+**Kelas ganas** = mel, bcc, akiec (1.954 foto, 19,5% data). df dan vasc adalah lesi jinak.
 
 ### Ambang batas "ganas" (dihitung dari DATA VALIDASI)
 

@@ -320,7 +320,7 @@ function slideLatarBelakang(pres) {
     "66,9% data, sedangkan dermatofibroma (df) hanya 1,1%. Rasio 58 : 1. " +
     "Model yang malas menebak kelas terbesar sudah mendapat akurasi 67%.\n\n" +
     "2. Klasifikasi 7 kelas yang mirip satu sama lain. Melanoma dan mola " +
-    "sama-sama lesi pigmented; pembeda chiefly ada di simetri dan sebaran " +
+    "sama-sama lesi pigmented; pembeda terutama ada di simetri dan sebaran " +
     "warna.\n\n" +
     "3. Risiko clinically nyata dari false negative. Melanoma yang lolos " +
     "diklasifikasi jinak adalah kegagalan paling berbahaya.",

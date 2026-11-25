@@ -119,6 +119,15 @@ const LABEL_KELAS = {
   df: "Dermatofibroma (df)",
 };
 
+// Definisi kelas ganas diambil dari threshold_config.json, berkas yang sama
+// dengan yang dibaca aplikasi. Jadi slide dan aplikasi tidak mungkin memakai
+// definisi yang berbeda.
+const THRESHOLD_CFG = JSON.parse(
+  fs.readFileSync(path.join(REPO, "models", "threshold_config.json"), "utf-8")
+);
+const KELAS_GANAS = THRESHOLD_CFG.malignant_classes;
+const KELAS_JINAK = THRESHOLD_CFG.benign_classes;
+
 // Jumlah kelas per split, digabung untuk seluruh dataset.
 const JUMLAH_KELAS = {};
 for (const split of ["train", "val", "test"]) {
@@ -133,6 +142,9 @@ const TOTAL_LESI =
 const RASIO_KELAS =
   Math.round((JUMLAH_KELAS.nv / JUMLAH_KELAS.df) * 10) / 10;
 const PESEN_DF = JUMLAH_KELAS.df / TOTAL_FOTO;
+const FOTO_GANAS = KELAS_GANAS.reduce((a, k) => a + (JUMLAH_KELAS[k] || 0), 0);
+const PESEN_GANAS = FOTO_GANAS / TOTAL_FOTO;
+const PESEN_MEL = JUMLAH_KELAS.mel / TOTAL_FOTO;
 const PESEN_NV = JUMLAH_KELAS.nv / TOTAL_FOTO;
 const FOTO_PER_LESI = TOTAL_FOTO - TOTAL_LESI;
 
@@ -143,6 +155,9 @@ const UKURAN_MODEL = (() => {
   return (fs.statSync(p).size / (1024 * 1024)).toFixed(1).replace(".", ",");
 })();
 
+// Definisi kelas ganas diambil dari threshold_config.json, berkas yang sama
+// dengan yang dibaca aplikasi. Jadi slide dan aplikasi tidak mungkin memakai
+// definisi yang berbeda.
 const MOB = H.final.per_model["MobileNetV2"];
 const BIN = MOB.binary_with_tuned_threshold;
 const MODEL_TERPILIH = H.final.selected_model;
@@ -511,40 +526,46 @@ pres.title = "Klasifikasi Lesi Kulit 7 Kelas - Presentasi Kelompok 6";
     pres,
     "BAB 1  ·  HOOK",
     "Kenapa ini penting?",
-    "Lesi kulit yang ganas sedikit, tapi salah klasifikasi berarti pasien menunda periksa."
+    `Kelas ganas cuma ${persen(PESEN_GANAS)} data, tapi salah klasifikasi ` +
+    "berarti pasien menunda periksa."
   );
 
   kartu(s, M, 1.95, 4.3, 3.9, {});
   s.addShape("rect", { x: M + 0.28, y: 2.2, w: 0.42, h: 0.055, fill: { color: C.rose } });
-  s.addText("DALAM DATASET", {
+  s.addText("KELAS GANAS DAN PRE-GANAS", {
     x: M + 0.28, y: 2.32, w: 3.7, h: 0.26, fontSize: 9.5, bold: true,
     color: C.inkLembut, fontFace: FONT_ISI, charSpacing: 1, margin: 0,
   });
-  s.addText(persen(PESEN_DF), {
+  s.addText(persen(PESEN_GANAS), {
     x: M + 0.28, y: 2.6, w: 3.7, h: 0.8, fontSize: 44, bold: true, color: C.rose,
     fontFace: FONT_JUDUL, margin: 0,
   });
-  s.addText("kelas df (dermatofibroma), salah satu kelas ganas", {
-    x: M + 0.28, y: 3.42, w: 3.7, h: 0.5, fontSize: 12, bold: true, color: C.ink,
+  s.addText("mel, bcc, dan akiec", {
+    x: M + 0.28, y: 3.42, w: 3.7, h: 0.34, fontSize: 12, bold: true, color: C.ink,
     fontFace: FONT_ISI, margin: 0,
   });
-  s.addText(`Hanya ${thousands(JUMLAH_KELAS.df)} dari ${thousands(TOTAL_FOTO)} foto. ` +
-    "Model yang hanya hafal kelas besar akan terlihat akurat sambil melewatkan lesi ganas.", {
-    x: M + 0.28, y: 4.05, w: 3.7, h: 1.1, fontSize: 11, color: C.inkLembut,
-    fontFace: FONT_ISI, margin: 0, valign: "top", lineSpacing: 16,
-  });
+  s.addText(
+    `${thousands(FOTO_GANAS)} dari ${thousands(TOTAL_FOTO)} foto. Sisanya ${persen(
+      1 - PESEN_GANAS
+    )} adalah lesi jinak, termasuk dermatofibroma (df) dan lesi vaskular (vasc). ` +
+    `Melanoma (mel) sendiri ${persen(PESEN_MEL)} foto dan merupakan jenis kanker ` +
+    "kulit paling mematikan.",
+    {
+      x: M + 0.28, y: 3.82, w: 3.7, h: 1.35, fontSize: 11, color: C.inkLembut,
+      fontFace: FONT_ISI, margin: 0, valign: "top", lineSpacing: 16,
+    }
+  );
   barTumpuk(s, M + 0.28, 5.25, 3.7, 0.26, [
-    { label: `nv ${persen(PESEN_NV)}`, porsi: PESEN_NV, warna: C.teal },
-    { label: "", porsi: 1 - PESEN_NV - PESEN_DF, warna: C.garis },
-    { label: "", porsi: PESEN_DF, warna: C.rose },
+    { label: `jinak ${persen(1 - PESEN_GANAS)}`, porsi: 1 - PESEN_GANAS, warna: C.teal },
+    { label: `ganas ${persen(PESEN_GANAS)}`, porsi: PESEN_GANAS, warna: C.rose },
   ]);
 
   const poin = [
     [
-      "Lesi jinak bukan berarti aman",
-      `Dari ${thousands(TOTAL_FOTO)} foto, hanya ${thousands(
-        JUMLAH_KELAS.df
-      )} berlabel df. Skrining berguna justru karena kasus jarang itu yang paling sering terlewat.`,
+      "Kelas minoritas menentukan sensitivitas",
+      `Mel, bcc, dan akiec hanya ${persen(PESEN_GANAS)} foto. Model yang hanya hafal ` +
+        "kelas besar terlihat akurat, padahal melanoma yang lolos adalah kegagalan " +
+        "paling berbahaya.",
     ],
     [
       "Foto pengguna bukan foto dermoskop",
@@ -646,13 +667,13 @@ pres.title = "Klasifikasi Lesi Kulit 7 Kelas - Presentasi Kelompok 6";
     x: 7.3, y: 3.72, w: 5.1, h: 0.26, fontSize: 9.5, bold: true, color: C.inkLembut,
     fontFace: FONT_ISI, charSpacing: 1, margin: 0,
   });
-  s.addText(`nv ${persen(PESEN_NV)}  ·  df ${persen(PESEN_DF)}`, {
+  s.addText(`nv ${persen(PESEN_NV)}  ·  kelas ganas ${persen(PESEN_GANAS)}`, {
     x: 7.3, y: 4.0, w: 5.1, h: 0.34, fontSize: 14, bold: true, color: C.ink,
     fontFace: FONT_ISI, margin: 0,
   });
   const maksKelas = Math.max(...Object.values(JUMLAH_KELAS));
   KELAS.forEach((k, i) => {
-    const y = 4.48 + i * 0.29;
+    const y = 4.44 + i * 0.26;
     s.addText(LABEL_KELAS[k], {
       x: 7.3, y, w: 2.15, h: 0.25, fontSize: 9.5, color: C.inkLembut,
       fontFace: FONT_ISI, margin: 0,
@@ -664,7 +685,7 @@ pres.title = "Klasifikasi Lesi Kulit 7 Kelas - Presentasi Kelompok 6";
     });
     s.addShape("roundRect", {
       x: 9.5, y: y + 0.05, w: Math.max(0.06, lebar), h: 0.15, rectRadius: 0.07,
-      fill: { color: k === "df" ? C.rose : C.teal },
+      fill: { color: KELAS_GANAS.includes(k) ? C.rose : C.teal },
     });
     s.addText(thousands(JUMLAH_KELAS[k]), {
       x: 11.58, y, w: 0.85, h: 0.25, fontSize: 9.5, bold: true, color: C.ink,
@@ -672,11 +693,12 @@ pres.title = "Klasifikasi Lesi Kulit 7 Kelas - Presentasi Kelompok 6";
     });
   });
   s.addText(
-    "Kelas df hanya " + persen(PESEN_DF) + " dari seluruh foto. Karena itu " +
-    "class weight dihitung dari data latih saja.",
+    "Kelas ganas: mel, bcc, akiec (" + persen(PESEN_GANAS) + "). Kelas df (" +
+    persen(PESEN_DF) + ") dan vasc (" + persen(JUMLAH_KELAS.vasc / TOTAL_FOTO) +
+    ") adalah lesi jinak; bobot class weight-nya tinggi karena kelangkaannya.",
     {
-      x: 7.3, y: 6.35, w: 5.1, h: 0.35, fontSize: 10, color: C.inkLembut,
-      fontFace: FONT_ISI, margin: 0,
+      x: 7.3, y: 6.28, w: 5.1, h: 0.45, fontSize: 10, color: C.inkLembut,
+      fontFace: FONT_ISI, margin: 0, valign: "top", lineSpacing: 13,
     }
   );
 
@@ -825,7 +847,9 @@ pres.title = "Klasifikasi Lesi Kulit 7 Kelas - Presentasi Kelompok 6";
     "Kelas minority harus diberi bobot, dan split harus per lesi. Keduanya " +
     "dijalankan di seluruh proyek: class weight dihitung hanya dari data latih, " +
     "dan pembagian data memakai GroupShuffleSplit per lesion_id dengan seed 42. " +
-    "Tiga assert anti-kebocoran memeriksa hasilnya, semuanya bernilai nol.",
+    "Tiga assert anti-kebocoran memeriksa hasilnya, semuanya bernilai nol. " +
+    "Kelas ganas dalam proyek ini adalah mel, bcc, dan akiec (" +
+    persen(PESEN_GANAS) + " foto); df dan vasc adalah lesi jinak.",
     C.teal, C.tealMuda
   );
 
@@ -1447,7 +1471,7 @@ pres.title = "Klasifikasi Lesi Kulit 7 Kelas - Presentasi Kelompok 6";
       f(SKOR[nama]),
     ];
   });
-  kartu(s, M, 1.98, 7.55, 2.5, {});
+  kartu(s, M, 1.98, 7.55, 2.95, {});
   s.addText("SKOR GABUNGAN (TEST SET)", {
     x: M + 0.3, y: 2.2, w: 7.0, h: 0.26, fontSize: 9.5, bold: true,
     color: C.inkLembut, fontFace: FONT_ISI, charSpacing: 1, margin: 0,
@@ -1459,8 +1483,17 @@ pres.title = "Klasifikasi Lesi Kulit 7 Kelas - Presentasi Kelompok 6";
     [2.15, 0.95, 1.2, 0.95, 0.8, 0.9],
     { fs: 9.5, barisTinggi: 0.36, sorotBaris: [MODEL_TERPILIH] }
   );
+  s.addText(
+    "Recall ganas pada tabel ini dihitung dari prediksi kelas atas. Di aplikasi, " +
+    `ambang ${f(BIN.threshold, 2)} dipakai pada jumlah probabilitas kelas ganas, ` +
+    `dan recall ganas pada ambang itu ${persen(BIN.recall)} dengan FN ${BIN.fn} kasus.`,
+    {
+      x: M + 0.3, y: 4.4, w: 6.95, h: 0.5, fontSize: 9.5, color: C.inkLembut,
+      fontFace: FONT_ISI, margin: 0, valign: "top", lineSpacing: 13,
+    }
+  );
 
-  kartu(s, 8.4, 1.98, 4.33, 2.5, {});
+  kartu(s, 8.4, 1.98, 4.33, 2.95, {});
   s.addText("BOBOT PENILAIAN", {
     x: 8.68, y: 2.2, w: 3.8, h: 0.26, fontSize: 9.5, bold: true,
     color: C.inkLembut, fontFace: FONT_ISI, charSpacing: 1, margin: 0,
@@ -1493,7 +1526,7 @@ pres.title = "Klasifikasi Lesi Kulit 7 Kelas - Presentasi Kelompok 6";
 
   const alasan = [
     ["F1 macro tertinggi", `F1 macro ${f(MOB.f1_macro)} di data uji, di atas tiga model lain.`],
-    ["Recall ganas naik", `Recall ganas ${persen(MOB.malignant_recall)} dengan FN hanya ${BIN.fn} kasus.`],
+    ["Recall ganas dijaga", `Pada ambang ${f(BIN.threshold, 2)}: recall ganas ${persen(BIN.recall)} dengan FN ${BIN.fn} kasus.`],
     ["Tahan domain shift", `Di PAD-UFES-20: recall ${persen(H.pad.hasil_per_model[MODEL_TERPILIH].recall)}, specificity ${persen(H.pad.hasil_per_model[MODEL_TERPILIH].specificity)}.`],
     ["Siap dipakai", UKURAN_MODEL
       ? `Bobot model ${UKURAN_MODEL} MB, inferensi ${f(MOB.inference_ms_per_image, 1)} ms per foto di CPU.`
@@ -1501,19 +1534,20 @@ pres.title = "Klasifikasi Lesi Kulit 7 Kelas - Presentasi Kelompok 6";
   ];
   alasan.forEach(([j, d], i) => {
     const x = M + i * 3.07;
-    kartu(s, x, 4.65, 2.86, 1.45, {});
+    kartu(s, x, 5.08, 2.86, 1.45, {});
     s.addText(j, {
-      x: x + 0.25, y: 4.85, w: 2.4, h: 0.3, fontSize: 12, bold: true, color: C.ink,
+      x: x + 0.25, y: 5.28, w: 2.4, h: 0.3, fontSize: 12, bold: true, color: C.ink,
       fontFace: FONT_ISI, margin: 0,
     });
     s.addText(d, {
-      x: x + 0.25, y: 5.17, w: 2.4, h: 0.8, fontSize: 10, color: C.inkLembut,
+      x: x + 0.25, y: 5.6, w: 2.4, h: 0.8, fontSize: 10, color: C.inkLembut,
       fontFace: FONT_ISI, margin: 0, valign: "top", lineSpacing: 14,
     });
   });
 
-  s.addNotes("Tunjukkan tabel: skor tertinggi bukan accuracy tertinggi. Bobot " +
-    "penilaian announced sebelum hasil dilihat, jadi bukan setelah fact.");
+  s.addNotes("Tunjukkan tabel: skor tertinggi bukan accuracy tertinggi. Recall " +
+    "ganas pada tabel dihitung dari prediksi kelas atas, sedangkan angka " +
+    "aplikasi memakai ambang " + f(BIN.threshold, 2) + ".");
 }
 
 // ================== SLIDE 14: CONFUSION MATRIX ============================
@@ -2025,8 +2059,8 @@ pres.title = "Klasifikasi Lesi Kulit 7 Kelas - Presentasi Kelompok 6";
 
   const mobPad = H.pad.hasil_per_model[MODEL_TERPILIH];
   const big = [
-    ["F1 macro", f(MOB.f1_macro), "data uji, 1.527 foto", C.teal],
-    ["RECALL GANAS", persen(MOB.malignant_recall), `FN ganas ${BIN.fn} kasus`, C.rose],
+    ["F1 MACRO", f(MOB.f1_macro), "data uji, 1.527 foto, 7 kelas", C.teal],
+    ["RECALL GANAS", persen(BIN.recall), `pada ambang ${f(BIN.threshold, 2)}, FN ${BIN.fn} kasus`, C.rose],
     ["F1 EKSTERNAL", f(mobPad.f1), "PAD-UFES-20, 2.298 foto", C.navy],
   ];
   big.forEach(([j, v, d, w], i) => {

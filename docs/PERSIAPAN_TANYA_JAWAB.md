@@ -107,10 +107,29 @@ Seluruh foto berasal dari pigmentasi Fitzpatrick I-II (kulit putih).
 Indonesia didominasi Fitzpatrick III-V.
 
 Akibatnya: model mungkin tidak bisa mengenali lesi pada kulit gelap, dan
-k groupes.application ini mungkin salah memberi reassurance pada pengguna
+kelompok aplikasi ini mungkin salah memberi rasa aman pada pengguna
 kulit gelap. Ini harus dinyatakan terbuka, bukan disembunyikan.
 
 **Bukti:** `notebooks/01_eda.ipynb` bagian 5 dan 6.
+
+### B5. Kelas mana yang disebut "ganas" di project ini?
+
+Project ini memakai pembagian resmi HAM10000. **Kelas ganas dan pre-ganas
+adalah tiga:** melanoma (mel), karsinoma sel basal (bcc), dan keratosis
+aktinik (akiec). Totalnya 1.954 foto atau 19,5% dari data.
+
+**Dermatofibroma (df) dan lesi vaskular (vasc) adalah lesi jinak.** Kelas
+df hanya punya 115 foto (1,1%), jadi bobot kelasnya tinggi karena kelangkaannya,
+bukan karena status ganas. Kalau df ikut dihitung sebagai ganas, angka
+recall ganas jadi tidak bisa dipercaya.
+
+Istilah yang dipakai aplikasi bukan "aman", melainkan "tidak menunjukkan ciri
+ganas", karena malignant_classes dan benign_classes dibaca dari
+`models/threshold_config.json`, satu berkas untuk metrik, ambang batas, dan
+tampilan.
+
+**Bukti:** `src/config.py` bagian 5, `models/threshold_config.json`,
+`notebooks/01_eda.ipynb` bagian 3.
 
 ---
 

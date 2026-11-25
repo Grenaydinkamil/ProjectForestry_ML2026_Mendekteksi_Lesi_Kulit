@@ -313,6 +313,10 @@ ke kodenya.
   lesions." *Scientific Data*, 5, 180161.
   <https://doi.org/10.1038/sdata.2018.161>
 - **Lisensi:** **CC BY-NC 4.0** (Kreatif Commons Atribusi-NonKomersial 4.0)
+- **Kelas ganas:** melanoma (mel), karsinoma sel basal (bcc), dan keratosis
+  aktinik (akiec), total 19,5% foto. Dermatofibroma (df) dan lesi vaskular
+  (vasc) adalah **lesi jinak**. Definisi ini dibaca aplikasi dari
+  `models/threshold_config.json`.
 - **Ketentuan:** penggunaan **hanya untuk keperluan akademik/non-komersial**.
   Dilarang penggunaan komersial. Atribusi wajib dicantumkan.
 - **Keterbatasan demografis:** seluruh gambar berasal dari populasi pigmentasi
