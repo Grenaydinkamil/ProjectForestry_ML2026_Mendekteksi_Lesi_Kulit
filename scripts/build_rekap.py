@@ -316,7 +316,7 @@ def main() -> int:
     w("| `README.md` | Struktur repo, aturan metodologi, cara jalankan |")
     w("| `docs/CATATAN_TEMUAN_DIAGNOSTIK.md` | Semua eksperimen + 11 bug "
       "yang ditemukan lewat eksekusi |")
-    w("| `docs/PERSIAPAN_TANYA_JAWAB.md` | 40+ soal potentiall beserta "
+    w("| `docs/PERSIAPAN_TANYA_JAWAB.md` | 40+ soal potensial beserta "
       "bukti file |")
     w("| `docs/PANDUAN_DEPLOY.md` | Panduan deploy aplikasi |")
     w("| `docs/CHECKLIST_VIDEO_DEMO.md` | Checklist rekaman video demo |")

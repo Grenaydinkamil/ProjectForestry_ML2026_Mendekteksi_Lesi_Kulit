@@ -1,6 +1,6 @@
 # Rekap Laporan Proyek
 
-**Status per 19 November 2026, 00:28.** Seluruh angka di dokumen ini diambil otomatis dari `docs/logs/*.json`, yang ditulis notebook saat dijalankan. Tidak ada angka yang diketik manual.
+**Status per 25 November 2026, 20:37.** Seluruh angka di dokumen ini diambil otomatis dari `docs/logs/*.json`, yang ditulis notebook saat dijalankan. Tidak ada angka yang diketik manual.
 
 ---
 
@@ -122,7 +122,7 @@ Konsekuensi: dipakai `CalibratedClassifierCV(ensemble=True)`, karena API-nya yan
 |---|---|
 | `README.md` | Struktur repo, aturan metodologi, cara jalankan |
 | `docs/CATATAN_TEMUAN_DIAGNOSTIK.md` | Semua eksperimen + 11 bug yang ditemukan lewat eksekusi |
-| `docs/PERSIAPAN_TANYA_JAWAB.md` | 40+ soal potentiall beserta bukti file |
+| `docs/PERSIAPAN_TANYA_JAWAB.md` | 40+ soal potensial beserta bukti file |
 | `docs/PANDUAN_DEPLOY.md` | Panduan deploy aplikasi |
 | `docs/CHECKLIST_VIDEO_DEMO.md` | Checklist rekaman video demo |
 | `docs/PPT_Laporan_Project.pptx` | Slide presentasi (14 slide) |

@@ -160,7 +160,7 @@ pip install -r requirements-training.txt
 ### Langkah 2: Unduh Dataset (MANUAL, oleh mahasiswa)
 
 **Dataset TIDAK di-commit ke repository** karena ukurannya besar dan lisensinya
-non-komersial. Aggara yang mengunduh:
+non-komersial. Agar yang mengunduh:
 
 1. **HAM10000** (dataset utama)
    - Kaggle: <https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000>
