@@ -6,7 +6,8 @@
   "scripts": {
     "ppt": "node scripts/build_ppt.js",
     "ppt:v2": "node scripts/build_ppt_v2.js",
-    "ppt:kel6": "node scripts/build_ppt_kel6.js"
+    "ppt:kel6": "node scripts/build_ppt_kel6.js",
+    "ppt:dermassist": "node scripts/build_ppt_dermassist.js"
   },
   "dependencies": {
     "pptxgenjs": "^4.0.1"

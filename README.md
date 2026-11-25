@@ -52,6 +52,7 @@ PAD-UFES-20) sebagai uji eksternal.
 | `docs/PPT_Laporan_Project.pptx` | PPT versi 1 — 14 slide, detail lengkap | Presentasi panjang |
 | `docs/PPT_Laporan_Project_v2.pptx` | **PPT versi 2 — 12 slide**, ringkas, palet klinis baru | Presentasi 5–7 menit + video |
 | `docs/PPT_KEL6_Kaltafarmforesty.pptx` | **PPT presentasi Kelompok 6 — 21 slide**: dataset, metodologi, hasil test, uji eksternal, demo, batas model | Presentasi lengkap ke dosen |
+| `docs/PPT_KEL6_DermAssist_Clinical.pptx` | **PPT presentasi DermAssist Clinical — 24 slide**: alur sesuai komponen tugas, catatan pembicara di tiap slide, lampiran tabel studi literatur | Presentasi 12 menit |
 
 Kedua file PPT dibangun dari `docs/logs/*.json`, sehingga tidak ada angka
 yang diketik manual. Jalankan `node scripts/build_ppt.js`,
