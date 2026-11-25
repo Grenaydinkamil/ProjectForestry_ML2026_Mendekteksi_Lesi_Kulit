@@ -812,13 +812,24 @@ pres.title = "Laporan Proyek ML2026 - Versi Presentasi 2";
     x: 0.75, y: 6.45, w: 8, h: 0.5, fontSize: 18, bold: true,
     color: C.putih, fontFace: FONT_JUDUL, margin: 0,
   });
-  s.addText("Dokumen:  LAPORAN_PROJECT_FINAL.md  ·  PANDUAN_PENGGUNAAN.md  ·  REKAP_LAPORAN.md", {
-    x: 0.75, y: 7.0, w: 12, h: 0.3, fontSize: 10,
-    color: "9AA8C2", fontFace: FONT_ISI, margin: 0,
-  });
+  // Tautan dibuat bisa diklik supaya URL tidak perlu disalin manual saat
+  // presentasi. Baris ini menggantikan daftar nama dokumen, karena nama
+  // dokumen sudah disebut di catatan pembicara.
+  s.addText([
+    { text: "Repo  ", options: { color: C.teal, bold: true } },
+    { text: "github.com/Grenaydinkamil/ProjectForestry_ML2026_Mendekteksi_Lesi_Kulit",
+      options: { color: "DCE3F0", underline: true,
+        hyperlink: { url: "https://github.com/Grenaydinkamil/ProjectForestry_ML2026_Mendekteksi_Lesi_Kulit" } } },
+    { text: "     App  ", options: { color: C.teal, bold: true } },
+    { text: "projectforestryml2026mendekteksilesikulit.streamlit.app",
+      options: { color: "DCE3F0", underline: true,
+        hyperlink: { url: "https://projectforestryml2026mendekteksilesikulit-vvearxur6nuwga44fmaf.streamlit.app" } } },
+  ], { x: 0.75, y: 7.0, w: 12, h: 0.3, fontSize: 9.5,
+    fontFace: FONT_ISI, margin: 0 });
 
-  s.addNotes("Tutup dengan empat poin. Undang pertanyaan. Ingatkan bahwa " +
-    "video demo dan upload GitHub masih perlu dilakukan mahasiswa.");
+  s.addNotes("Tutup dengan empat poin. Undang pertanyaan. Dokumen pendukung: " +
+    "LAPORAN_PROJECT_FINAL.md, PANDUAN_PENGGUNAAN.md, REKAP_LAPORAN.md. " +
+    "Video demo masih perlu direkam mahasiswa.");
 }
 
 // ---------------------------------------------------------------------------

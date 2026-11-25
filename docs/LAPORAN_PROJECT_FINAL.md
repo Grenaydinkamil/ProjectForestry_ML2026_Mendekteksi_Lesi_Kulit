@@ -9,7 +9,7 @@
 | Anggota 1 | Arken Yusufa Ibrahim (J0404241166) |
 | Anggota 2 | Ghazali Habibie A (J0404241145) |
 | Anggota 3 | Nabil Zulfan Nurtsani (J0404241052) |
-| Dosen pengampu | Dosen Pengampu ML2026 |
+| Dosen pengampu | Dodik Ariyanto, S.T.P., M.Si. dan Astika Istiqomah, S.Kom., M.T. |
 | Tanggal | November 2026 |
 | Status dokumen | Final — seluruh angka diambil dari `docs/logs/*.json` |
 
@@ -327,6 +327,9 @@ bisa tidak sinkron. Pengujian memakai `streamlit.testing.v1.AppTest`:
 kondisi kosong, unggah gambar (7 bar muncul), file rusak (pesan ramah), dan
 fitur contoh gambar semuanya lulus.
 
+Aplikasi dapat dicoba di
+<https://projectforestryml2026mendekteksilesikulit-vvearxur6nuwga44fmaf.streamlit.app>.
+
 ---
 
 ## BAB 5 — PEMBAHASAN
@@ -438,20 +441,33 @@ Bug lengkap ada di Lampiran A dan `docs/CATATAN_TEMUAN_DIAGNOSTIK.md`.
 ## DAFTAR PUSTAKA
 
 1. Tschandl, P., Rosendahl, C., dan Kittler, H. (2018). The HAM10000
-   dataset. *Scientific Data*, 5, 180214. DOI 10.1038/sdata.2018.161.
-2. Pacheco, A. G. C. dkk. (2020). PAD-UFES-20. *Data in Brief*. DOI
-   10.1016/j.dib.2020.106221.
-3. Fogelberg, A. dkk. (2023). Domain shifts in dermoscopic skin cancer
-   datasets. *New Biotechnology*. DOI 10.1016/j.nbt.2023.04.006.
-4. Combalia, M. dkk. (2022). Validation of AI prediction models for skin
-   cancer diagnosis. DOI terverifikasi di `docs/logs/verifikasi_literature.json`.
-5. Almaraz-Damian, G. dkk. (2020). Melanoma and nevus classification using
-   handcraft and deep learning.
-6. Katsch, F. dkk. (2022). Comparison of CNN architectures for robustness
-   against common corruptions. *Dermatology Practical & Conceptual*. DOI
-   10.5826/dpc.1203a126.
-7. Rotemberg, V. dkk. (2021). A patient-centric dataset of images and
-   metadata for identifying melanomas. *Scientific Data*. DOI
+   dataset, a large collection of multi-source dermatoscopic images of
+   common pigmented skin lesions. *Scientific Data*, 5, 180161. DOI
+   10.1038/sdata.2018.161.
+2. Pacheco, A. G. C., Lima, G. R., Salomão, A. S., dkk. (2020).
+   PAD-UFES-20: A skin lesion dataset composed of patient data and
+   clinical images collected from smartphones. *Data in Brief*, 32,
+   106221. DOI 10.1016/j.dib.2020.106221.
+3. Fogelberg, K., Chamarthi, S., Maron, R. C., dkk. (2023). Domain
+   shifts in dermoscopic skin cancer datasets: Evaluation of essential
+   limitations for clinical translation. *New Biotechnology*, 76,
+   106-117. DOI 10.1016/j.nbt.2023.04.006.
+4. Combalia, M., Codella, N., Rotemberg, V., dkk. (2022). Validation of
+   artificial intelligence prediction models for skin cancer diagnosis
+   using dermoscopy images: the 2019 International Skin Imaging
+   Collaboration Grand Challenge. *The Lancet Digital Health*, 4,
+   e330-e339. DOI 10.1016/S2589-7500(22)00021-8.
+5. Almaraz-Damian, J. A., Ponomaryov, V., Sadovnychiy, S., dkk. (2020).
+   Melanoma and nevus skin lesion classification using handcraft and
+   deep learning feature fusion via mutual information measures.
+   *Entropy*, 22(4), 484. DOI 10.3390/e22040484.
+6. Katsch, F., Rinner, C., Tschandl, P., dkk. (2022). Comparison of
+   convolutional neural network architectures for robustness against
+   common artefacts in dermatoscopic images. *Dermatology Practical &
+   Conceptual*, 12(3), e126. DOI 10.5826/dpc.1203a126.
+7. Rotemberg, V., Kurtansky, N., Betz-Stablein, B., dkk. (2021). A
+   patient-centric dataset of images and metadata for identifying
+   melanomas using clinical context. *Scientific Data*, 8, 34. DOI
    10.1038/s41597-021-00815-z.
 
 Seluruh DOI dan judul diverifikasi otomatis ke PubMed.
@@ -494,16 +510,17 @@ Seluruh DOI dan judul diverifikasi otomatis ke PubMed.
 | PPT versi 2 (12 slide) | Final | `docs/PPT_Laporan_Project_v2.pptx` |
 | Panduan penggunaan | Final | `docs/PANDUAN_PENGGUNAAN.md` |
 | 7 sitasi PubMed | Terverifikasi | `docs/logs/verifikasi_literature.json` |
-| 9 pemeriksaan otomatis | Semua lulus | `scripts/verify_final.py` |
+| 13 pemeriksaan otomatis | Semua lulus | `scripts/verify_final.py` |
+| Ringkasan split per `lesion_id` | Tersimpan | `docs/logs/split_summary.json` |
+| Repositori publik | Terbit | <https://github.com/Grenaydinkamil/ProjectForestry_ML2026_Mendekteksi_Lesi_Kulit> |
+| Aplikasi daring | Terbit di Streamlit Community Cloud | <https://projectforestryml2026mendekteksilesikulit-vvearxur6nuwga44fmaf.streamlit.app> |
 
 ### Masih perlu dilakukan mahasiswa (tidak bisa diwakilkan)
 
-1. **Login Kaggle** dan menerima lisensi dataset HAM10000/PAD-UFES-20.
-2. **Login GitHub** dan mengunggah repositori (data tidak di-commit).
-3. **Rekam video demo** maksimal 7 menit memakai
+1. **Rekam video demo** maksimal 7 menit memakai
    `docs/CHECKLIST_VIDEO_DEMO.md`.
-4. **Finalisasi nama dosen pengampu** di `docs/info_kelompok.json` bila
-   berbeda dari placeholder.
+2. **Bangunkan aplikasi Cloud** sebelum presentasi. Aplikasi tidur setelah
+   tidak dipakai, dan bangun pertama bisa memicu build ulang.
 
 ### Cara memverifikasi seluruh proyek
 
@@ -511,6 +528,6 @@ Seluruh DOI dan judul diverifikasi otomatis ke PubMed.
 python scripts/verify_final.py
 ```
 
-Perintah ini menjalankan sembilan pemeriksaan sekaligus dan membangun
+Perintah ini menjalankan tiga belas pemeriksaan sekaligus dan membangun
 ulang PPT serta rekap laporan dari file log, sehingga tidak ada angka
 yang diketik manual.

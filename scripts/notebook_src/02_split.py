@@ -59,8 +59,8 @@ print("Target split: train 70% / val 15% / test 15%")
 # Gambar 2 (lesi X, foto dari sudut kanan) -> masuk TEST
 # ```
 #
-# Modelzaiinstagramaui "menghafal" lesi X saat training (dia sudah pernah
-# melihat lesi itu, albeit dari sudut berbeda). Lalu di test, model itu
+# Model akan "menghafal" lesi X saat training (dia sudah pernah
+# melihat lesi itu, meskipun dari sudut berbeda). Lalu di test, model itu
 # "mengenali" lesi X lagi. Skor becomes sangat tinggi, padahal model
 # tersebut **belum pernah melihat lesi baru** sama sekali.
 #
@@ -112,7 +112,7 @@ print(contoh[["image_id", "dx", "dx_type"]].to_string(index=False))
 # mudah diverifikasi dan dipelihara.
 #
 # **Kenapa test dipisah DULU?**
-# Ini rejuvenasi yang penting secara metodologis. Kalau test dipisah
+# Ini keputusan yang penting secara metodologis. Kalau test dipisah
 # terakhir, maka pemilihan hyperparameter (yang memakai validation) bisa
 # "bocor" informasi test lewat penyesuaian terus-menerus. Memisahkan test
 # lebih dulu memastikan test set benar-benar "disembunyikan" sampai
@@ -365,7 +365,7 @@ for idx, cls in enumerate(C.CLASSES):
 # **Interpretasi Bagian 6:**
 #
 # - Bobot `df` sekitar **11x** lebih besar dari `nv`. Ini mencerminkan
-#   Betulan fakta bahwa `df` jauh lebih jarang.
+#   fakta bahwa `df` jauh lebih jarang.
 # - Setelah normalisasi (rata-rata = 1), bobot `df` ~2,4 dan `nv` ~0,05.
 #   Artinya satu kesalahan pada `df` "~50x lebih berat" dibanding satu
 #   kesalahan pada `nv`.

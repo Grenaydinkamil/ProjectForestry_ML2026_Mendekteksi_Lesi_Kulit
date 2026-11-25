@@ -251,7 +251,7 @@ Panduan lengkap ada di `docs/PANDUAN_DEPLOY.md`. Ringkasannya:
 ## 10. Verifikasi dan Reproduksi
 
 ```bash
-# Cek seluruh proyek (9 pemeriksaan + bangun ulang PPT & laporan)
+# Cek seluruh proyek (13 pemeriksaan + bangun ulang PPT & laporan)
 python scripts/verify_final.py
 
 # Uji isi aplikasi saja

@@ -388,7 +388,7 @@ function slideTujuan(pres) {
 function slideStudiLiteratur(pres) {
   const s = pres.addSlide();
   judulSlide(s, "BAGIAN 3", "Studi Literatur",
-    "Lima artikel jurnal yang diverifikasi lewat NCBI PubMed (bukan karangan)");
+    "Enam artikel jurnal yang diverifikasi lewat NCBI PubMed (bukan karangan)");
   s.addText(
     "Semua entri diverifikasi otomatis: judul, penulis, tahun, jurnal, dan DOI " +
     "diambil langsung dari indeks PubMed. Verifikasi ulang bisa dijalankan " +
@@ -402,7 +402,7 @@ function slideStudiLiteratur(pres) {
     ["Pacheco dkk. (2020)", "Data in Brief", "PAD-UFES-20: 2.298 citra klinis smartphone, 6 diagnosis, Fitzpatrick I-VI", "Dataset uji eksternal"],
     ["Fogelberg dkk. (2023)", "New Biotechnology", "Domain shift pada dataset dermoskopi skin cancer; degradasi lintas-dataset", "Landasan teori evaluasi domain shift"],
     ["Combalia dkk. (2022)", "Lancet Digital Health", "Validasi AI dermatologi; performa turun pada kasus yang tak ada di training", "Justifikasi uji eksternal yang jujur"],
-    ["Almaraz-Damian dkk. (2024)", "Entropy", "Fusi fitur handcraft (ABCD) dengan fitur deep learning via mutual information", "Pembanding dengan pendekatan HOG + histogram"],
+    ["Almaraz-Damian dkk. (2020)", "Entropy", "Fusi fitur handcraft (ABCD) dengan fitur deep learning via mutual information", "Pembanding dengan pendekatan HOG + histogram"],
     ["Katsch dkk. (2022)", "Derm. Pract. Concept.", "Ketahanan arsitektur CNN terhadap artefak dermoskop (tanda, penggaris)", "Pembanding dengan masalah domain shift"],
   ];
   tabel(s, 0.55, 2.16, 12.2,
@@ -914,17 +914,35 @@ function slidePembagian(pres, info) {
     color: C.merah, fontFace: "Calibri",
   });
   s.addText(
-    "- Source code / link repository\n" +
+    "- Source code dan model (lihat Tautan)\n" +
     "- Link dataset (tidak di-commit karena lisensi)\n" +
     "- Model hasil training (.keras)\n" +
     "- Daftar 5+ jurnal referensi yang sudah diverifikasi\n" +
     "- Tabel studi literatur\n" +
-    "- Link aplikasi / deployment\n" +
     "- PPT laporan\n" +
     "- Video demo maksimal 7 menit",
     { x: 6.85, y: 2.18, w: 5.9, h: 2.6, fontSize: 10.5, color: C.tinta,
       fontFace: "Calibri", lineSpacing: 15 }
   );
+
+  // Tautan dibuat bisa diklik supaya dosen tidak perlu menyalin URL dari
+  // slide. Tanpa ini, presentasi hanya menampilkan teks yang harus diketik
+  // ulang secara manual.
+  s.addText("Tautan", {
+    x: 6.85, y: 4.95, w: 5.9, h: 0.28, fontSize: 12, bold: true,
+    color: C.merah, fontFace: "Calibri",
+  });
+  s.addText([
+    { text: "Repo: ", options: { color: C.tinta, bold: true } },
+    { text: "github.com/Grenaydinkamil/ProjectForestry_ML2026_Mendekteksi_Lesi_Kulit",
+      options: { color: "1F5FA8", underline: true,
+        hyperlink: { url: "https://github.com/Grenaydinkamil/ProjectForestry_ML2026_Mendekteksi_Lesi_Kulit" } } },
+    { text: "\nApp: ", options: { color: C.tinta, bold: true } },
+    { text: "projectforestryml2026mendekteksilesikulit.streamlit.app",
+      options: { color: "1F5FA8", underline: true,
+        hyperlink: { url: "https://projectforestryml2026mendekteksilesikulit-vvearxur6nuwga44fmaf.streamlit.app" } } },
+  ], { x: 6.85, y: 5.25, w: 5.9, h: 1.0, fontSize: 9.5,
+    fontFace: "Calibri", lineSpacing: 15 });
 
   kotakCatatan(s, 0.55, 4.6, 6.0, 1.55, "VIDEO DEMO (MAKS 7 MENIT)",
     "1. Perkenalan anggota dan judul (0:30)\n" +

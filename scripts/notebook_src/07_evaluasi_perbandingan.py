@@ -201,7 +201,7 @@ def predict_with(model_info, df):
 # laporan, dan memilih satu untuk aplikasi. **Kepemilihan model untuk
 # aplikasi TIDAK boleh mengubah model yang sudah terkunci** -- kalau model
 # A menang di test tapi model B lebih cocok untuk aplikasi (misal lebih
-# ringan), kita tetap discusses.
+# ringan), kita tetap diskusikan.
 
 # %%
 results_test = {}
@@ -662,7 +662,7 @@ for i, cls in enumerate(C.CLASSES):
 #   karena jumlahnya paling besar (ratusan). Tapi error rate-nya kecil.
 # - **`mel` (melanoma)** punya jumlah error absolut yang lebih kecil, tapi
 #   **error rate-nya lebih tinggi** dan **akibatnya paling berbahaya**.
-# - **`df` dan `vasc`** punya sample kecil di test, jadi metriknya tidak
+# - **`df` dan `vasc`** punya sampel kecil di test, jadi metriknya tidak
 #   stabil. Kita harus menyebut ini di laporan.
 #
 # **Kolom "ke"** menunjukkan ke kelas mana kesalahan itu pergi. Ini
@@ -778,7 +778,7 @@ plt.show()
 #
 # **Mengapa ini penting untuk laporan:**
 # - Menunjukkan kita **memahami** model, bukan cuma menjalankannya
-# - Memberi alasanwhy model gagal pada kasus tertentu
+# - Memberi alasan mengapa model gagal pada kasus tertentu
 # - Menghubungkan temuan EDA (Notebook 01) dengan hasil akhir (Notebook 07)
 # - Membuka jalan untuk pengembangan lanjutan: augmentasi yang secara
 #   khusus meniru variasi warna melanoma yang sulit
@@ -847,7 +847,7 @@ for nama, info in models.items():
 # ### Kriteria dan bobot
 #
 # Kita tidak bisa hanya melihat satu angka. Kita gunakan penilaian
-# BERBASAI KARAKTERISTIK MASALAH, seperti diminta assignment.
+# BERBASIS KARAKTERISTIK MASALAH, seperti diminta assignment.
 #
 # | Kriteria | Bobot | Alasan |
 # |---|---|---|

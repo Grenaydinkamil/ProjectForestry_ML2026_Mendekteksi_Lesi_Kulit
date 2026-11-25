@@ -57,7 +57,7 @@ print("Repo root:", REPO_ROOT)
 #
 # **HAM10000** (*Human Against Machine with 10,000 images*) adalah dataset
 # dermatologi yang dibuat oleh tim di Universitas Graz, Austria, DAN
-# Queensland, Australia, denganzir.publish pada tahun 2018 (Tschandl dkk.,
+# Queensland, Australia, diterbitkan pada tahun 2018 (Tschandl dkk.,
 # *Scientific Data*).
 #
 # Dataset ini berisi **foto lesi kulit yang diambil dengan dermatoskop**,
@@ -287,7 +287,7 @@ print(f"Total kelas tidak ganas: {counts[C.BENIGN_CLASSES].sum():,} "
 # ## Bagian 4: Visualisasi 2 - Kualitas Diagnosis (dx_type)
 #
 # Ini pemeriksaan yang sering terlewat tapi sangat penting untuk menilai
-# \'seberapa trustworthy\' label dataset ini.
+# \'seberapa tepercaya\' label dataset ini.
 
 # %%
 dx_type_counts = df["dx_type"].value_counts()
@@ -638,7 +638,7 @@ plt.show()
 # - **Semua gambar berukuran 600 x 450 piksel** dan mode **RGB**. Konsisten.
 # - Aspect ratio 4:3, **bukan persegi**. Ini penting: kalau kita resize
 #   paksa ke 128x128 atau 224x224, gambar akan **terdistorsi (melebar)**.
-#   Kamifzieren di seluruh proyek, jadi tidak ada masalah. (Alternatifnya
+#   Kami resize dengan cara yang sama di seluruh proyek, jadi tidak ada masalah. (Alternatifnya
 #   padding dengan background hitam, tapi itu menambah artefak yang tidak
 #   ada di data asli.)
 # - Karena resolusi seragam, **tidak ada kebutuhan resize adaptif** -

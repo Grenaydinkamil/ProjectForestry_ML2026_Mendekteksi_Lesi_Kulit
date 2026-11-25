@@ -42,7 +42,7 @@ VERIFIED_ARTICLES = [
                    "distribusi kelas, dan konsistensi label"),
         "hasil_utama": ("Menyediakan benchmark standar untuk klasifikasi "
                         "lesi pigmented; menyoroti bahwa 67% data adalah "
-                        "kelas nv (mola) sehingga metrik harusdurability "
+                        "kelas nv (mola) sehingga metrik harus "
                         "memperhitungkan ketidakseimbangan"),
         "perbedaan": ("Ini dataset DASAR proyek kita, bukan studi yang "
                        "membandingkan model. Proyek kita menambah: "
@@ -99,7 +99,7 @@ VERIFIED_ARTICLES = [
         "hasil_utama": ("Menunjukkan bahwa performa model menurun nyata "
                         "ketika dievaluasi pada domain yang berbeda; "
                         "mengidentifikasi faktor-faktor penyebabnya"),
-        "perbedaan": ("Studi ini menganalisis Fenomena domain shift secara "
+        "perbedaan": ("Studi ini menganalisis fenomena domain shift secara "
                        "umum pada dataset dermoskopi. Proyek kita "
                        "mengukur domain shift secara KUANTITATIF pada model "
                        "kita sendiri, dan yang lebih penting: dari dermoskop "
@@ -132,7 +132,7 @@ VERIFIED_ARTICLES = [
                        "ganti perangkat kamera, bukan ganti pusat medis."),
     },
     {
-        "key": "almaraz2024",
+        "key": "almaraz2020",
         "pmid": "33286257",
         "authors": "Almaraz-Damian JA, Ponomaryov V, Sadovnychiy S, et al.",
         "year": 2020,
@@ -148,14 +148,13 @@ VERIFIED_ARTICLES = [
         "dataset": "Dataset citra lesi kulit (dermoskopi)",
         "metode": "Fusi fitur handcraft + deep learning dengan mutual information",
         "metrik": "Accuracy dan metrik klasifikasi biner melanoma vs nevus",
-        "hasil_utama": ("Menunjukkan bahwa menggabungkan fituryangtradisional "
-                        "handcraft dengan fitur deep learning saling "
+        "hasil_utama": ("Menunjukkan bahwa menggabungkan fitur handcraft "
+                        "tradisional dengan fitur deep learning saling "
                         "melengkapi dan meningkatkan performa"),
-        "perbedaan": ("Studi ini memakai HOG sebagai fitur handcraft di "
-                       "tensorflow yang JADI digabung dengan CNN. Proyek "
-                       "kita membandingkan keduanya sebagai model "
-                       "TERPISAH, sehingga bisa melihat siapa yang lebih "
-                       "kuat dan apakah gabungannya Rd lebih baik."),
+        "perbedaan": ("Studi ini menggabungkan fitur handcraft dengan fitur "
+                       "deep learning. Proyek kita membandingkan keduanya "
+                       "sebagai model TERPISAH, sehingga bisa melihat siapa "
+                       "yang lebih kuat dan apakah gabungannya lebih baik."),
     },
     {
         "key": "katsch2022",
@@ -200,10 +199,10 @@ VERIFIED_ARTICLES = [
         "hasil_utama": ("Menyediakan dataset dengan informasi klinis dan "
                         "kelompok lesi per pasien, yang dibutuhkan untuk "
                         "menilai model secara realistis"),
-        "perbedaan": ("Dataset ini menyorotiImportance data per pasien. "
-                       "Proyek kita juga/grouping per lesion_id saat split, "
-                       "yang merupakan prinsip serupa: mencegah data "
-                       "leakage dari lesi yang sama."),
+        "perbedaan": ("Dataset ini menyoroti pentingnya data per pasien. "
+                       "Proyek kita juga memakai grouping per `lesion_id` "
+                       "saat split, yang merupakan prinsip serupa: mencegah "
+                       "data leakage dari lesi yang sama."),
     },
 ]
 

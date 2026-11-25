@@ -4,6 +4,11 @@
 
 Machine Learning Project - Mata Kuliah Pembelajaran Mesin (ML2026)
 
+**Dosen pengampu:** Dodik Ariyanto, S.T.P., M.Si. dan Astika Istiqomah,
+S.Kom., M.T.
+
+**Repositori:** <https://github.com/Grenaydinkamil/ProjectForestry_ML2026_Mendekteksi_Lesi_Kulit>
+
 **Aplikasi daring (Streamlit Community Cloud):**
 <https://projectforestryml2026mendekteksilesikulit-vvearxur6nuwga44fmaf.streamlit.app>
 
@@ -300,9 +305,10 @@ ke kodenya.
 ### HAM10000
 
 - **Sumber:** <https://doi.org/10.7910/DVN/DBX6T5> (Harvard Dataverse)
-- **Artikel:** Tschandl, C., et al. (2018). "The HAM10000 dataset: A large collection
-  of diverse 7-class dermatoscopic images for algorithms in dermatology."
-  *Scientific Data*, 5, 180214. <https://doi.org/10.1038/sdata.2018.214>
+- **Artikel:** Tschandl, C., et al. (2018). "The HAM10000 dataset, a large
+  collection of multi-source dermatoscopic images of common pigmented skin
+  lesions." *Scientific Data*, 5, 180161.
+  <https://doi.org/10.1038/sdata.2018.161>
 - **Lisensi:** **CC BY-NC 4.0** (Kreatif Commons Atribusi-NonKomersial 4.0)
 - **Ketentuan:** penggunaan **hanya untuk keperluan akademik/non-komersial**.
   Dilarang penggunaan komersial. Atribusi wajib dicantumkan.
@@ -313,10 +319,11 @@ ke kodenya.
 ### PAD-UFES-20
 
 - **Sumber:** Mendeley Data, <https://data.mendeley.com/datasets/36r8h2ej4q/1>
-- **Artikel:** Pacheco, A. G., et al. (2020). "PAD-UFES-20: A Large-Scale Dataset
-  of Pigmented Skin Lesions." *Data in Brief*, 39, 107601.
-  <https://doi.org/10.1016/j.dib.2020.107601>
-- **Lisensi:** **CC BY-NC 4.0**
+- **Artikel:** Pacheco, A. G., et al. (2020). "PAD-UFES-20: A skin lesion
+  dataset composed of patient data and clinical images collected from
+  smartphones." *Data in Brief*, 32, 106221.
+  <https://doi.org/10.1016/j.dib.2020.106221>
+- **Lisensi:** **CC BY 4.0**
 - **Kegunaan:** **hanya untuk uji eksternal**, tidak untuk training.
 
 > **Catatan kepatuhan:** repository ini tidak memuat data mentah dari kedua
@@ -348,9 +355,9 @@ Aplikasi ini adalah **alat bantu belajar**, bukan alat diagnosis.
 
 | Anggota | Tugas |
 |---|---|
-| Arken Yusufa | Dataset, EDA, preprocessing, split data (Notebook 01-02) |
-| Nabil Zulfan | Feature engineering, model klasik + deep learning, evaluasi (Notebook 03-07) |
-| Ghazali Habibi A | Implementasi aplikasi Streamlit, uji eksternal, PPT, video demo (Notebook 08, app/) |
+| Arken Yusufa Ibrahim (J0404241166) | Dataset, EDA, preprocessing, split data, rekayasa fitur (Notebook 01-03) |
+| Ghazali Habibie A (J0404241145) | Model klasik (SVM/RF), CNN, MobileNetV2, evaluasi dan perbandingan (Notebook 04-07) |
+| Nabil Zulfan Nurtsani (J0404241052) | Uji eksternal PAD-UFES-20, aplikasi Streamlit, deploy, PPT, video demo (Notebook 08, `app/`) |
 
 ---
 
